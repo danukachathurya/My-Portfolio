@@ -3,30 +3,8 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Button from "./Button";
 import PageSection from "./PageSection";
 import { certificates } from "../data/certificates";
+import { getItemMotionProps, getSectionMotionProps } from "../lib/motion";
 import { ui } from "../lib/ui";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.06,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 22 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.58,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
 
 function ExpandIcon(props) {
   return (
@@ -51,15 +29,8 @@ function CloseIcon(props) {
 export default function CertificatesSection({ className = "", id = "certificates" }) {
   const shouldReduceMotion = useReducedMotion();
   const [activeCertificate, setActiveCertificate] = useState(null);
-  const sectionMotionProps = shouldReduceMotion
-    ? {}
-    : {
-        initial: "hidden",
-        whileInView: "show",
-        viewport: { once: true, amount: 0.2 },
-        variants: containerVariants,
-      };
-  const itemMotionProps = shouldReduceMotion ? {} : { variants: itemVariants };
+  const sectionMotionProps = getSectionMotionProps(shouldReduceMotion);
+  const itemMotionProps = getItemMotionProps(shouldReduceMotion);
 
   useEffect(() => {
     if (!activeCertificate) {

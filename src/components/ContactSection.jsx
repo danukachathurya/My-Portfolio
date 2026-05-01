@@ -2,31 +2,15 @@ import { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import Button from "./Button";
 import PageSection from "./PageSection";
+import {
+  CheckCircleIcon,
+  MailIcon,
+  MessageIcon,
+  PhoneIcon,
+} from "./icons/PortfolioIcons";
 import { contactHighlights, contactInfo } from "../data/contact";
+import { getItemMotionProps, getSectionMotionProps } from "../lib/motion";
 import { ui } from "../lib/ui";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.06,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 22 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.58,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
 
 const initialFormValues = {
   name: "",
@@ -58,40 +42,6 @@ function validateContactForm(values) {
   return nextErrors;
 }
 
-function PhoneIcon(props) {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
-      <path d="M6.6 4h2.1c.42 0 .79.28.91.68l.95 3.18a1 1 0 0 1-.24.98l-1.31 1.31a14.1 14.1 0 0 0 4.93 4.93l1.31-1.31a1 1 0 0 1 .98-.24l3.18.95c.4.12.68.49.68.91v2.1A1.5 1.5 0 0 1 19.5 21C10.94 21 4 14.06 4 5.5A1.5 1.5 0 0 1 5.5 4h1.1Z" />
-    </svg>
-  );
-}
-
-function MailIcon(props) {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
-      <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
-      <path d="m5 7 7 5 7-5" />
-    </svg>
-  );
-}
-
-function CheckCircleIcon(props) {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
-      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-      <path d="m9 11 3 3L22 4" />
-    </svg>
-  );
-}
-
-function MessageIcon(props) {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z" />
-    </svg>
-  );
-}
-
 export default function ContactSection({ className = "", id = "contact" }) {
   const shouldReduceMotion = useReducedMotion();
   const [formValues, setFormValues] = useState(initialFormValues);
@@ -99,15 +49,8 @@ export default function ContactSection({ className = "", id = "contact" }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
 
-  const sectionMotionProps = shouldReduceMotion
-    ? {}
-    : {
-        initial: "hidden",
-        whileInView: "show",
-        viewport: { once: true, amount: 0.2 },
-        variants: containerVariants,
-      };
-  const itemMotionProps = shouldReduceMotion ? {} : { variants: itemVariants };
+  const sectionMotionProps = getSectionMotionProps(shouldReduceMotion);
+  const itemMotionProps = getItemMotionProps(shouldReduceMotion);
 
   const fieldClassName = (hasError) =>
     `w-full rounded-[1.4rem] border bg-white/82 px-4 py-3.5 text-sm text-slate-950 shadow-[0_18px_40px_-30px_rgba(15,23,42,0.16)] outline-none transition duration-200 placeholder:text-slate-400 focus:border-sky-400/40 focus:ring-2 focus:ring-sky-400/20 motion-reduce:transition-none dark:bg-slate-950/55 dark:text-white dark:placeholder:text-slate-500 ${
