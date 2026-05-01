@@ -17,7 +17,7 @@ function applyTheme(theme) {
   root.style.colorScheme = theme;
 }
 
-export default function ThemeToggle() {
+export default function ThemeToggle({ className = "" }) {
   const [theme, setTheme] = useState(getCurrentTheme);
   const nextTheme = theme === "dark" ? "light" : "dark";
 
@@ -29,7 +29,7 @@ export default function ThemeToggle() {
   return (
     <Button
       aria-label={`Switch to ${nextTheme} mode`}
-      className="min-w-[9.5rem] justify-between"
+      className={`min-w-[9.5rem] justify-between ${className}`.trim()}
       onClick={() => setTheme(nextTheme)}
       size="sm"
       variant="secondary"
