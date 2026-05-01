@@ -1,6 +1,7 @@
 import Button from "../components/Button";
 import PageHero from "../components/PageHero";
 import PageSection from "../components/PageSection";
+import { ui } from "../lib/ui";
 
 export default function AboutPage() {
   return (
@@ -19,14 +20,14 @@ export default function AboutPage() {
         }
         aside={
           <div className="space-y-4">
-            <p className="eyebrow-title">Suggested Story Blocks</p>
+            <p className={ui.eyebrowTitle}>Suggested Story Blocks</p>
             {[
               "Your background and current focus",
               "The principles that guide your decisions",
               "How you collaborate with teams and stakeholders",
             ].map((item) => (
-              <div key={item} className="surface-card p-4">
-                <p className="meta-copy">{item}</p>
+              <div key={item} className={`${ui.card} p-4`}>
+                <p className={ui.meta}>{item}</p>
               </div>
             ))}
           </div>
@@ -53,11 +54,9 @@ export default function AboutPage() {
               body: "Add interests, motivations, or experiences that make the portfolio feel personal and memorable.",
             },
           ].map((item) => (
-            <div key={item.title} className="surface-card p-5">
-              <p className="text-xl font-semibold" style={{ color: "var(--foreground)" }}>
-                {item.title}
-              </p>
-              <p className="body-copy mt-3">{item.body}</p>
+            <div key={item.title} className={`${ui.card} p-5`}>
+              <p className={ui.title}>{item.title}</p>
+              <p className={`${ui.body} mt-3`}>{item.body}</p>
             </div>
           ))}
         </div>
@@ -69,16 +68,16 @@ export default function AboutPage() {
         description="Use one column to cover your path and another to show the practical outcomes of that path in real product or engineering settings."
       >
         <div className="grid gap-4 xl:grid-cols-2">
-          <div className="surface-card p-6">
-            <p className="meta-copy">Background and trajectory</p>
-            <p className="body-copy mt-3">
+          <div className={`${ui.card} p-6`}>
+            <p className={ui.meta}>Background and trajectory</p>
+            <p className={`${ui.body} mt-3`}>
               Summarize the moments, projects, or transitions that shaped your current direction.
               This is a good place to show progression rather than listing every detail.
             </p>
           </div>
-          <div className="surface-card p-6">
-            <p className="meta-copy">What collaborators experience</p>
-            <p className="body-copy mt-3">
+          <div className={`${ui.card} p-6`}>
+            <p className={ui.meta}>What collaborators experience</p>
+            <p className={`${ui.body} mt-3`}>
               Explain what it feels like to work with you: communication style, speed of iteration,
               ownership, documentation habits, and willingness to mentor or coordinate.
             </p>

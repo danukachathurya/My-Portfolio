@@ -1,13 +1,11 @@
+import { cn } from "../lib/cn";
+
 const sizeClasses = {
   wide: "max-w-7xl",
   default: "max-w-6xl",
   narrow: "max-w-5xl",
   prose: "max-w-4xl",
 };
-
-function joinClasses(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function Container({
   as: Component = "div",
@@ -18,7 +16,11 @@ export default function Container({
 }) {
   return (
     <Component
-      className={joinClasses("container-shell", sizeClasses[size] ?? sizeClasses.default, className)}
+      className={cn(
+        "mx-auto w-full px-6 sm:px-8 lg:px-10",
+        sizeClasses[size] ?? sizeClasses.default,
+        className,
+      )}
       {...props}
     >
       {children}

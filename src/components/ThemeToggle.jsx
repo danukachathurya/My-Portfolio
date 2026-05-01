@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Button from "./Button";
+import { cn } from "../lib/cn";
+import { ui } from "../lib/ui";
 
 const STORAGE_KEY = "portfolio-theme";
 
@@ -29,13 +31,13 @@ export default function ThemeToggle({ className = "" }) {
   return (
     <Button
       aria-label={`Switch to ${nextTheme} mode`}
-      className={`min-w-[9.5rem] justify-between ${className}`.trim()}
+      className={cn("min-w-[9.5rem] justify-between", className)}
       onClick={() => setTheme(nextTheme)}
       size="sm"
       variant="secondary"
     >
       <span>Theme</span>
-      <span className="theme-indicator">{theme}</span>
+      <span className={ui.badge}>{theme}</span>
     </Button>
   );
 }

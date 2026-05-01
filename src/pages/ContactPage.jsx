@@ -1,6 +1,7 @@
 import Button from "../components/Button";
 import PageHero from "../components/PageHero";
 import PageSection from "../components/PageSection";
+import { ui } from "../lib/ui";
 
 export default function ContactPage() {
   return (
@@ -19,14 +20,14 @@ export default function ContactPage() {
         }
         aside={
           <div className="space-y-4">
-            <p className="eyebrow-title">Contact Best Practices</p>
+            <p className={ui.eyebrowTitle}>Contact Best Practices</p>
             {[
               "List your preferred channels clearly",
               "Say what kinds of opportunities fit best",
               "Set expectations around response time",
             ].map((item) => (
-              <div key={item} className="surface-card p-4">
-                <p className="meta-copy">{item}</p>
+              <div key={item} className={`${ui.card} p-4`}>
+                <p className={ui.meta}>{item}</p>
               </div>
             ))}
           </div>
@@ -53,11 +54,9 @@ export default function ContactPage() {
               body: "Use for technical collaboration, open-source follow-ups, or general inbound interest.",
             },
           ].map((item) => (
-            <div key={item.title} className="surface-card p-5">
-              <p className="text-xl font-semibold" style={{ color: "var(--foreground)" }}>
-                {item.title}
-              </p>
-              <p className="body-copy mt-3">{item.body}</p>
+            <div key={item.title} className={`${ui.card} p-5`}>
+              <p className={ui.title}>{item.title}</p>
+              <p className={`${ui.body} mt-3`}>{item.body}</p>
             </div>
           ))}
         </div>
@@ -69,15 +68,16 @@ export default function ContactPage() {
         description="Tell people how you like to start a conversation so they know what useful outreach looks like."
       >
         <div className="grid gap-4 xl:grid-cols-2">
-          <div className="surface-card p-6">
-            <p className="meta-copy">Good first message</p>
-            <p className="body-copy mt-3">
-              Include the opportunity type, timeline, context, and any links that help clarify scope.
+          <div className={`${ui.card} p-6`}>
+            <p className={ui.meta}>Good first message</p>
+            <p className={`${ui.body} mt-3`}>
+              Include the opportunity type, timeline, context, and any links that help clarify
+              scope.
             </p>
           </div>
-          <div className="surface-card p-6">
-            <p className="meta-copy">Response rhythm</p>
-            <p className="body-copy mt-3">
+          <div className={`${ui.card} p-6`}>
+            <p className={ui.meta}>Response rhythm</p>
+            <p className={`${ui.body} mt-3`}>
               Share a realistic response window so visitors know what to expect after reaching out.
             </p>
           </div>

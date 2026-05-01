@@ -1,8 +1,6 @@
 import Container from "./Container";
-
-function joinClasses(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import { cn } from "../lib/cn";
+import { ui } from "../lib/ui";
 
 export default function PageSection({
   children,
@@ -15,18 +13,14 @@ export default function PageSection({
   title,
 }) {
   return (
-    <section id={id} className={joinClasses("py-10", className)}>
+    <section id={id} className={cn("py-10", className)}>
       <Container size={size}>
-        <div className={joinClasses("panel p-6 sm:p-8 lg:p-10", panelClassName)}>
+        <div className={cn(ui.panel, "p-6 sm:p-8 lg:p-10", panelClassName)}>
           {(eyebrow || title || description) && (
             <div className="space-y-3">
-              {eyebrow ? <p className="eyebrow-title">{eyebrow}</p> : null}
-              {title ? (
-                <h2 className="section-title" style={{ color: "var(--foreground)" }}>
-                  {title}
-                </h2>
-              ) : null}
-              {description ? <p className="lead-copy max-w-4xl">{description}</p> : null}
+              {eyebrow ? <p className={ui.eyebrowTitle}>{eyebrow}</p> : null}
+              {title ? <h2 className={ui.sectionTitle}>{title}</h2> : null}
+              {description ? <p className={`${ui.lead} max-w-4xl`}>{description}</p> : null}
             </div>
           )}
 

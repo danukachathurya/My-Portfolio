@@ -1,5 +1,6 @@
 import Button from "../components/Button";
 import PageHero from "../components/PageHero";
+import { ui } from "../lib/ui";
 
 export default function NotFoundPage() {
   return (
@@ -17,8 +18,10 @@ export default function NotFoundPage() {
       }
       aside={
         <div className="space-y-4">
-          <div className="surface-card p-4">
-            <p className="meta-copy">Try the Home, About, Journal, CV, or Contact routes from the navigation.</p>
+          <div className={`${ui.card} p-4`}>
+            <p className={ui.meta}>
+              Try the Home, About, Journal, CV, or Contact routes from the navigation.
+            </p>
           </div>
         </div>
       }

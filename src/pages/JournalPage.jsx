@@ -1,6 +1,7 @@
 import Button from "../components/Button";
 import PageHero from "../components/PageHero";
 import PageSection from "../components/PageSection";
+import { ui } from "../lib/ui";
 
 export default function JournalPage() {
   return (
@@ -19,14 +20,14 @@ export default function JournalPage() {
         }
         aside={
           <div className="space-y-4">
-            <p className="eyebrow-title">Writing Tracks</p>
+            <p className={ui.eyebrowTitle}>Writing Tracks</p>
             {[
               "Engineering notes and implementation lessons",
               "Product thinking and UX decisions",
               "Career reflections and learning logs",
             ].map((item) => (
-              <div key={item} className="surface-card p-4">
-                <p className="meta-copy">{item}</p>
+              <div key={item} className={`${ui.card} p-4`}>
+                <p className={ui.meta}>{item}</p>
               </div>
             ))}
           </div>
@@ -53,11 +54,9 @@ export default function JournalPage() {
               body: "Capture experiments, failures, and evolving viewpoints so the journal feels alive and honest.",
             },
           ].map((item) => (
-            <div key={item.title} className="surface-card p-5">
-              <p className="text-xl font-semibold" style={{ color: "var(--foreground)" }}>
-                {item.title}
-              </p>
-              <p className="body-copy mt-3">{item.body}</p>
+            <div key={item.title} className={`${ui.card} p-5`}>
+              <p className={ui.title}>{item.title}</p>
+              <p className={`${ui.body} mt-3`}>{item.body}</p>
             </div>
           ))}
         </div>
@@ -69,15 +68,15 @@ export default function JournalPage() {
         description="You do not need every post to be long. Even short notes become valuable when they follow a clear pattern."
       >
         <div className="grid gap-4 xl:grid-cols-2">
-          <div className="surface-card p-6">
-            <p className="meta-copy">Case note</p>
-            <p className="body-copy mt-3">
+          <div className={`${ui.card} p-6`}>
+            <p className={ui.meta}>Case note</p>
+            <p className={`${ui.body} mt-3`}>
               Problem, constraints, decision, outcome, and what you would change next time.
             </p>
           </div>
-          <div className="surface-card p-6">
-            <p className="meta-copy">Learning log</p>
-            <p className="body-copy mt-3">
+          <div className={`${ui.card} p-6`}>
+            <p className={ui.meta}>Learning log</p>
+            <p className={`${ui.body} mt-3`}>
               Topic explored, why it mattered, key lesson, and one practical application going forward.
             </p>
           </div>

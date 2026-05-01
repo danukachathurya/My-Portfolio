@@ -4,14 +4,8 @@ import Button from "./Button";
 import Container from "./Container";
 import ThemeToggle from "./ThemeToggle";
 import { navigationLinks } from "../data/navigation";
-
-function navLinkStyles(isActive) {
-  return {
-    color: isActive ? "var(--foreground)" : "var(--muted)",
-    background: isActive ? "color-mix(in srgb, var(--accent) 10%, transparent)" : "transparent",
-    borderColor: isActive ? "color-mix(in srgb, var(--accent) 20%, transparent)" : "transparent",
-  };
-}
+import { cn } from "../lib/cn";
+import { ui } from "../lib/ui";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,29 +16,16 @@ export default function Navbar() {
   }, [location.pathname]);
 
   return (
-    <header
-      className="sticky top-0 z-20 border-b backdrop-blur-xl"
-      style={{
-        background: "color-mix(in srgb, var(--background-elevated) 90%, transparent)",
-        borderColor: "var(--border)",
-      }}
-    >
+    <header className="sticky top-0 z-20 border-b border-slate-200/70 bg-white/70 backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/70">
       <Container as="nav" size="wide" className="py-4">
         <div className="flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-3">
-            <span
-              className="flex h-11 w-11 items-center justify-center rounded-2xl text-sm font-semibold"
-              style={{
-                background: "var(--gradient-hero)",
-                color: "var(--accent-contrast)",
-                boxShadow: "0 16px 30px -16px rgba(6, 182, 212, 0.4)",
-              }}
-            >
+            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-r from-sky-400 via-cyan-300 to-teal-300 text-sm font-semibold text-slate-950 shadow-[0_16px_30px_-16px_rgba(6,182,212,0.4)]">
               DP
             </span>
             <span className="space-y-1">
-              <span className="eyebrow-title block">Developer Portfolio</span>
-              <span className="block text-sm font-semibold" style={{ color: "var(--foreground)" }}>
+              <span className={`${ui.eyebrowTitle} block`}>Developer Portfolio</span>
+              <span className="block text-sm font-semibold text-slate-950 dark:text-white">
                 Modern SaaS-style navigation
               </span>
             </span>
@@ -58,9 +39,13 @@ export default function Navbar() {
                     to={link.to}
                     end={link.to === "/"}
                     className={({ isActive }) =>
-                      `nav-link ${isActive ? "nav-link-active" : ""}`
+                      cn(
+                        "relative inline-flex items-center justify-center overflow-hidden rounded-full border px-4 py-3 text-sm font-semibold transition duration-200 motion-reduce:transform-none motion-reduce:transition-none after:absolute after:bottom-2 after:left-4 after:right-4 after:h-0.5 after:origin-center after:scale-x-0 after:rounded-full after:bg-gradient-to-r after:from-sky-400 after:via-cyan-300 after:to-teal-300 after:transition-transform after:duration-200 hover:-translate-y-0.5 hover:after:scale-x-100",
+                        isActive
+                          ? "border-sky-400/20 bg-sky-400/10 text-slate-950 after:scale-x-100 dark:text-white"
+                          : "border-transparent text-slate-600 hover:bg-white/80 dark:text-slate-300 dark:hover:bg-white/5",
+                      )
                     }
-                    style={({ isActive }) => navLinkStyles(isActive)}
                   >
                     {link.label}
                   </NavLink>
@@ -78,46 +63,41 @@ export default function Navbar() {
               type="button"
               aria-expanded={isOpen}
               aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
-              className="flex h-11 w-11 items-center justify-center rounded-2xl border transition hover:bg-white/5"
+              className="flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200/70 bg-white/80 transition duration-200 hover:bg-white motion-reduce:transition-none dark:border-slate-700/60 dark:bg-slate-950/70 dark:hover:bg-white/5"
               onClick={() => setIsOpen((currentState) => !currentState)}
-              style={{
-                borderColor: "var(--border)",
-                background: "color-mix(in srgb, var(--background-elevated) 90%, transparent)",
-              }}
             >
               <span className="relative h-4 w-5">
                 <span
-                  className={`menu-line absolute left-0 top-0 h-0.5 w-5 rounded-full ${
-                    isOpen ? "translate-y-[7px] rotate-45" : ""
-                  }`}
-                  style={{ background: "var(--foreground)" }}
+                  className={cn(
+                    "absolute left-0 top-0 h-0.5 w-5 rounded-full bg-slate-950 transition duration-200 dark:bg-white",
+                    isOpen && "translate-y-[7px] rotate-45",
+                  )}
                 />
                 <span
-                  className={`menu-line absolute left-0 top-[7px] h-0.5 w-5 rounded-full ${
-                    isOpen ? "opacity-0" : ""
-                  }`}
-                  style={{ background: "var(--foreground)" }}
+                  className={cn(
+                    "absolute left-0 top-[7px] h-0.5 w-5 rounded-full bg-slate-950 transition duration-200 dark:bg-white",
+                    isOpen && "opacity-0",
+                  )}
                 />
                 <span
-                  className={`menu-line absolute left-0 top-[14px] h-0.5 w-5 rounded-full ${
-                    isOpen ? "-translate-y-[7px] -rotate-45" : ""
-                  }`}
-                  style={{ background: "var(--foreground)" }}
+                  className={cn(
+                    "absolute left-0 top-[14px] h-0.5 w-5 rounded-full bg-slate-950 transition duration-200 dark:bg-white",
+                    isOpen && "-translate-y-[7px] -rotate-45",
+                  )}
                 />
               </span>
             </button>
           </div>
         </div>
 
-        <div className="mobile-nav-shell lg:hidden" data-open={isOpen}>
-          <div className="mobile-nav-panel">
-            <div
-              className="mt-4 rounded-[1.75rem] border p-4 shadow-2xl shadow-slate-950/15"
-              style={{
-                borderColor: "var(--border)",
-                background: "color-mix(in srgb, var(--background-elevated) 94%, transparent)",
-              }}
-            >
+        <div
+          className={cn(
+            "grid overflow-hidden transition-all duration-300 motion-reduce:transition-none lg:hidden",
+            isOpen ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
+          )}
+        >
+          <div className="overflow-hidden">
+            <div className="rounded-[1.75rem] border border-slate-200/70 bg-white/90 p-4 shadow-2xl shadow-slate-950/15 backdrop-blur-xl dark:border-slate-700/60 dark:bg-slate-950/90">
               <ul className="grid gap-2">
                 {navigationLinks.map((link) => (
                   <li key={link.label}>
@@ -125,9 +105,13 @@ export default function Navbar() {
                       to={link.to}
                       end={link.to === "/"}
                       className={({ isActive }) =>
-                        `nav-link block ${isActive ? "nav-link-active" : ""}`
+                        cn(
+                          "relative block overflow-hidden rounded-full border px-4 py-3 text-sm font-semibold transition duration-200 motion-reduce:transition-none after:absolute after:bottom-2 after:left-4 after:right-4 after:h-0.5 after:origin-center after:scale-x-0 after:rounded-full after:bg-gradient-to-r after:from-sky-400 after:via-cyan-300 after:to-teal-300 after:transition-transform after:duration-200",
+                          isActive
+                            ? "border-sky-400/20 bg-sky-400/10 text-slate-950 after:scale-x-100 dark:text-white"
+                            : "border-transparent text-slate-600 hover:bg-white dark:text-slate-300 dark:hover:bg-white/5",
+                        )
                       }
-                      style={({ isActive }) => navLinkStyles(isActive)}
                     >
                       {link.label}
                     </NavLink>
@@ -136,7 +120,7 @@ export default function Navbar() {
               </ul>
 
               <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_auto]">
-                <ThemeToggle className="w-full justify-between min-w-0" />
+                <ThemeToggle className="min-w-0 w-full justify-between" />
                 <Button to="/contact" className="w-full sm:w-auto" size="sm">
                   Start a Conversation
                 </Button>

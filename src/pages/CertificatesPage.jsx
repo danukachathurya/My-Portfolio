@@ -1,6 +1,7 @@
 import Button from "../components/Button";
 import PageHero from "../components/PageHero";
 import PageSection from "../components/PageSection";
+import { ui } from "../lib/ui";
 
 export default function CertificatesPage() {
   return (
@@ -19,14 +20,14 @@ export default function CertificatesPage() {
         }
         aside={
           <div className="space-y-4">
-            <p className="eyebrow-title">What to include</p>
+            <p className={ui.eyebrowTitle}>What to include</p>
             {[
               "Certificate title and issuing organization",
               "Date earned and verification link",
               "Why the credential matters to your goals",
             ].map((item) => (
-              <div key={item} className="surface-card p-4">
-                <p className="meta-copy">{item}</p>
+              <div key={item} className={`${ui.card} p-4`}>
+                <p className={ui.meta}>{item}</p>
               </div>
             ))}
           </div>
@@ -53,11 +54,9 @@ export default function CertificatesPage() {
               body: "Credentials tied to communication, leadership, delivery practices, or product thinking.",
             },
           ].map((item) => (
-            <div key={item.title} className="surface-card p-5">
-              <p className="text-xl font-semibold" style={{ color: "var(--foreground)" }}>
-                {item.title}
-              </p>
-              <p className="body-copy mt-3">{item.body}</p>
+            <div key={item.title} className={`${ui.card} p-5`}>
+              <p className={ui.title}>{item.title}</p>
+              <p className={`${ui.body} mt-3`}>{item.body}</p>
             </div>
           ))}
         </div>
@@ -69,16 +68,18 @@ export default function CertificatesPage() {
         description="Do not overload certificate entries. Keep them clean, verifiable, and connected to what the reader already saw elsewhere."
       >
         <div className="grid gap-4 xl:grid-cols-2">
-          <div className="surface-card p-6">
-            <p className="meta-copy">Suggested fields</p>
-            <p className="body-copy mt-3">
-              Title, issuer, completion date, verification URL, and a one-line note on the skills reinforced.
+          <div className={`${ui.card} p-6`}>
+            <p className={ui.meta}>Suggested fields</p>
+            <p className={`${ui.body} mt-3`}>
+              Title, issuer, completion date, verification URL, and a one-line note on the skills
+              reinforced.
             </p>
           </div>
-          <div className="surface-card p-6">
-            <p className="meta-copy">Suggested framing</p>
-            <p className="body-copy mt-3">
-              Explain how the credential fits into your current work, portfolio direction, or long-term career plan.
+          <div className={`${ui.card} p-6`}>
+            <p className={ui.meta}>Suggested framing</p>
+            <p className={`${ui.body} mt-3`}>
+              Explain how the credential fits into your current work, portfolio direction, or
+              long-term career plan.
             </p>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import Button from "../components/Button";
 import PageHero from "../components/PageHero";
 import PageSection from "../components/PageSection";
+import { ui } from "../lib/ui";
 
 export default function CareerPlanPage() {
   return (
@@ -19,14 +20,14 @@ export default function CareerPlanPage() {
         }
         aside={
           <div className="space-y-4">
-            <p className="eyebrow-title">Roadmap Rhythm</p>
+            <p className={ui.eyebrowTitle}>Roadmap Rhythm</p>
             {[
               "Now: strengthen execution and system fluency",
               "Next: broaden ownership and influence",
               "Later: lead larger product and technical bets",
             ].map((item) => (
-              <div key={item} className="surface-card p-4">
-                <p className="meta-copy">{item}</p>
+              <div key={item} className={`${ui.card} p-4`}>
+                <p className={ui.meta}>{item}</p>
               </div>
             ))}
           </div>
@@ -53,11 +54,9 @@ export default function CareerPlanPage() {
               body: "Grow into leading initiatives, mentoring others, and shaping strategy with technical credibility.",
             },
           ].map((item) => (
-            <div key={item.title} className="surface-card p-5">
-              <p className="text-xl font-semibold" style={{ color: "var(--foreground)" }}>
-                {item.title}
-              </p>
-              <p className="body-copy mt-3">{item.body}</p>
+            <div key={item.title} className={`${ui.card} p-5`}>
+              <p className={ui.title}>{item.title}</p>
+              <p className={`${ui.body} mt-3`}>{item.body}</p>
             </div>
           ))}
         </div>
@@ -69,16 +68,18 @@ export default function CareerPlanPage() {
         description="Career plans become stronger when they connect to habits, projects, writing, or credentials that visitors can actually inspect."
       >
         <div className="grid gap-4 xl:grid-cols-2">
-          <div className="surface-card p-6">
-            <p className="meta-copy">Evidence to link</p>
-            <p className="body-copy mt-3">
-              Projects, journal entries, certificates, mentorship stories, or examples of increased scope.
+          <div className={`${ui.card} p-6`}>
+            <p className={ui.meta}>Evidence to link</p>
+            <p className={`${ui.body} mt-3`}>
+              Projects, journal entries, certificates, mentorship stories, or examples of
+              increased scope.
             </p>
           </div>
-          <div className="surface-card p-6">
-            <p className="meta-copy">Signals to avoid</p>
-            <p className="body-copy mt-3">
-              Vague ambition without action, generic titles without context, or goals that are not reflected anywhere else in the portfolio.
+          <div className={`${ui.card} p-6`}>
+            <p className={ui.meta}>Signals to avoid</p>
+            <p className={`${ui.body} mt-3`}>
+              Vague ambition without action, generic titles without context, or goals that are not
+              reflected anywhere else in the portfolio.
             </p>
           </div>
         </div>
