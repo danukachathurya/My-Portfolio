@@ -1,5 +1,6 @@
 export const navigationLinks = [
-  { label: "Home", href: "#" },
-  { label: "Projects", href: "#structure" },
-  { label: "Contact", href: "#next-steps" },
+  { label: "Palette", href: "#palette" },
+  { label: "Type", href: "#type" },
+  { label: "Components", href: "#components" },
+  { label: "Layout", href: "#layout" },
 ];

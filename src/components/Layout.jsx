@@ -3,12 +3,10 @@ import Footer from "./Footer";
 
 export default function Layout({ children }) {
   return (
-    <div className="relative flex min-h-screen flex-col overflow-hidden text-slate-100">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_rgba(96,165,250,0.14),_transparent_30%),radial-gradient(circle_at_bottom_left,_rgba(45,212,191,0.12),_transparent_28%)]" />
+    <div className="app-shell">
+      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34rem] bg-[radial-gradient(circle_at_top,_rgba(14,165,233,0.18),_transparent_54%)] blur-3xl dark:bg-[radial-gradient(circle_at_top,_rgba(103,232,249,0.16),_transparent_56%)]" />
       <Navbar />
-      <main className="mx-auto flex w-full max-w-6xl flex-1 px-6 py-12 sm:px-8 lg:px-10">
-        {children}
-      </main>
+      <main className="flex-1 pb-24 pt-8 sm:pt-12">{children}</main>
       <Footer />
     </div>
   );

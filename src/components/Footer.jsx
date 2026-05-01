@@ -1,10 +1,27 @@
+import Container from "./Container";
+
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-slate-950/60">
-      <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-6 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
-        <p>Built with React, Vite, and Tailwind CSS.</p>
-        <p>Ready for your components, pages, assets, and data.</p>
-      </div>
+    <footer
+      className="border-t"
+      id="footer"
+      style={{
+        background: "color-mix(in srgb, var(--background-elevated) 86%, transparent)",
+        borderColor: "var(--border)",
+      }}
+    >
+      <Container
+        size="wide"
+        className="flex flex-col gap-4 py-6 sm:flex-row sm:items-center sm:justify-between"
+      >
+        <div className="space-y-1">
+          <p className="meta-copy">Built for developer portfolios that want product-level polish.</p>
+          <p className="body-copy">
+            Shared tokens, reusable buttons, and responsive containers keep every section aligned.
+          </p>
+        </div>
+        <p className="mono-copy">React + Vite + Tailwind CSS + class-based dark mode</p>
+      </Container>
     </footer>
   );
 }

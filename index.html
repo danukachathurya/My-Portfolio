@@ -3,14 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
     <meta
       name="description"
-      content="A Vite + React starter with Tailwind CSS and a reusable layout."
+      content="A modern developer portfolio design system built with React, Vite, and Tailwind CSS."
     />
     <title>My Portfolio</title>
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      (() => {
+        const storageKey = "portfolio-theme";
+
+        try {
+          const savedTheme = window.localStorage.getItem(storageKey);
+          const theme =
+            savedTheme === "light" || savedTheme === "dark"
+              ? savedTheme
+              : "dark";
+
+          document.documentElement.classList.toggle("dark", theme === "dark");
+          document.documentElement.style.colorScheme = theme;
+        } catch {
+          document.documentElement.classList.add("dark");
+          document.documentElement.style.colorScheme = "dark";
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
