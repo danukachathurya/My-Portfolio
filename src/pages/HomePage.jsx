@@ -4,10 +4,112 @@ import heroPortrait from "../assets/danuka-photo-placeholder.png";
 import Button from "../components/Button";
 import Container from "../components/Container";
 import PageSection from "../components/PageSection";
-import { secondaryNavigationLinks } from "../data/navigation";
 import { ui } from "../lib/ui";
 
 const ROLE = "Full Stack Developer Intern";
+
+const aboutParagraphs = [
+  "I am a 4th-year IT undergraduate at SLIIT University with a strong foundation in software engineering and backend development.",
+  "I completed my internship as a Software Engineer Intern at Gamage Recruiters, gaining hands-on experience in developing and maintaining real-world applications.",
+  "I am skilled in building scalable systems, working with REST APIs and databases, and motivated to contribute to backend-focused projects.",
+];
+
+const focusAreas = [
+  "Software Engineering",
+  "Backend Development",
+  "REST APIs",
+  "Databases",
+  "Scalable Systems",
+];
+
+const heroSummaryCards = [
+  {
+    title: "Current role",
+    value: "Full Stack Developer Intern",
+    className: "",
+  },
+  {
+    title: "Core strength",
+    value: "Clean backend systems",
+    className: "",
+  },
+  {
+    title: "Current focus",
+    value: "API-driven product development",
+    className: "sm:col-span-2",
+  },
+];
+
+const profileHighlights = [
+  {
+    title: "Education",
+    value: "4th-year IT undergraduate at SLIIT University",
+    icon: EducationIcon,
+  },
+  {
+    title: "Internship",
+    value: "Software Engineer Intern at Gamage Recruiters",
+    icon: BriefcaseIcon,
+  },
+  {
+    title: "Focus",
+    value: "Scalable backend systems, REST APIs, and database-driven apps",
+    icon: ServerIcon,
+  },
+];
+
+const experienceCards = [
+  {
+    title: "Hands-on internship experience",
+    body: "Working at Gamage Recruiters gave me experience maintaining and improving real-world applications, adapting to existing codebases, and contributing within practical delivery constraints.",
+    icon: BriefcaseIcon,
+  },
+  {
+    title: "Backend-first problem solving",
+    body: "I enjoy designing the logic behind products: APIs, data handling, validation flows, and systems that remain clear and maintainable as they grow.",
+    icon: DatabaseIcon,
+  },
+  {
+    title: "Strong engineering foundation",
+    body: "My academic path and project work have helped me build discipline around software design, implementation quality, and thinking beyond just getting features to work.",
+    icon: CodeIcon,
+  },
+];
+
+const workHighlights = [
+  {
+    title: "API-centered application builds",
+    body: "I am motivated by work that connects business logic, service design, and clean API contracts into systems that are easy to extend.",
+    tags: ["REST APIs", "Validation", "Integration"],
+  },
+  {
+    title: "Database-backed product features",
+    body: "I enjoy shaping the data layer behind features, from modeling and persistence to the practical decisions that keep applications reliable.",
+    tags: ["Data Modeling", "Queries", "Scalability"],
+  },
+  {
+    title: "Full-stack collaboration",
+    body: "Although I am backend-focused, I can collaborate across the stack and make sure frontend experiences connect smoothly with the systems behind them.",
+    tags: ["Frontend Integration", "Teamwork", "Delivery"],
+  },
+];
+
+const contactDetails = [
+  {
+    label: "Phone",
+    value: "+94 xx xxx xxxx",
+    helper: "Replace this placeholder with the phone number you want to share publicly.",
+    href: "tel:+94000000000",
+    icon: PhoneIcon,
+  },
+  {
+    label: "Email",
+    value: "your.email@example.com",
+    helper: "Replace this placeholder with the email address you actively monitor.",
+    href: "mailto:your.email@example.com",
+    icon: MailIcon,
+  },
+];
 
 const heroContainer = {
   hidden: { opacity: 0 },
@@ -32,36 +134,107 @@ const heroItem = {
   },
 };
 
-const photoSummaryCards = [
-  {
-    title: "Current role",
-    value: "Full Stack Developer Intern",
-    className: "",
+const sectionContainer = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.05,
+    },
   },
-  {
-    title: "Core strength",
-    value: "Clean backend systems",
-    className: "",
-  },
-  {
-    title: "Style",
-    value: "Modern developer brand",
-    className: "sm:col-span-2",
-  },
-];
+};
 
-function GitHubIcon() {
+const sectionItem = {
+  hidden: { opacity: 0, y: 22 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.58,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
+
+function GitHubIcon(props) {
   return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-current">
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="fill-current" {...props}>
       <path d="M12 1.5A10.5 10.5 0 0 0 8.68 22c.53.1.72-.22.72-.5 0-.25-.01-1.06-.02-1.91-2.96.64-3.58-1.25-3.58-1.25-.48-1.2-1.18-1.53-1.18-1.53-.96-.66.08-.65.08-.65 1.06.08 1.62 1.08 1.62 1.08.95 1.6 2.49 1.14 3.1.87.1-.67.37-1.14.67-1.4-2.36-.26-4.84-1.16-4.84-5.2 0-1.15.41-2.09 1.08-2.82-.1-.27-.47-1.35.11-2.82 0 0 .89-.28 2.92 1.08a10.3 10.3 0 0 1 5.32 0c2.03-1.36 2.92-1.08 2.92-1.08.58 1.47.22 2.55.11 2.82.68.73 1.08 1.67 1.08 2.82 0 4.05-2.49 4.93-4.86 5.18.38.32.72.94.72 1.9 0 1.37-.01 2.48-.01 2.82 0 .28.19.61.73.5A10.5 10.5 0 0 0 12 1.5Z" />
     </svg>
   );
 }
 
-function LinkedInIcon() {
+function LinkedInIcon(props) {
   return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-current">
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="fill-current" {...props}>
       <path d="M5.37 3.5A1.87 1.87 0 1 0 5.4 7.24a1.87 1.87 0 0 0-.03-3.74ZM3.78 8.9h3.25V20.5H3.78V8.9Zm5.28 0h3.11v1.58h.05c.43-.81 1.49-1.66 3.08-1.66 3.3 0 3.9 2.13 3.9 4.9v6.79h-3.24v-6.02c0-1.44-.03-3.3-2.06-3.3-2.06 0-2.38 1.57-2.38 3.19v6.13H9.06V8.9Z" />
+    </svg>
+  );
+}
+
+function EducationIcon(props) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
+      <path d="M3 8.25 12 4l9 4.25L12 12.5 3 8.25Z" />
+      <path d="M6.75 10.5v4.25c0 1.3 2.35 2.75 5.25 2.75s5.25-1.45 5.25-2.75V10.5" />
+    </svg>
+  );
+}
+
+function BriefcaseIcon(props) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
+      <path d="M8 6.75V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5v1.25" />
+      <path d="M4.5 8h15A1.5 1.5 0 0 1 21 9.5v8A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5v-8A1.5 1.5 0 0 1 4.5 8Z" />
+      <path d="M3 12.25h18" />
+    </svg>
+  );
+}
+
+function ServerIcon(props) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
+      <rect x="4" y="4.5" width="16" height="5" rx="1.5" />
+      <rect x="4" y="14.5" width="16" height="5" rx="1.5" />
+      <path d="M8 7h.01M8 17h.01M12 7h6M12 17h6" />
+    </svg>
+  );
+}
+
+function DatabaseIcon(props) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
+      <ellipse cx="12" cy="6.5" rx="7" ry="2.75" />
+      <path d="M5 6.5v5c0 1.52 3.13 2.75 7 2.75s7-1.23 7-2.75v-5" />
+      <path d="M5 11.5v5C5 18.02 8.13 19.25 12 19.25s7-1.23 7-2.75v-5" />
+    </svg>
+  );
+}
+
+function CodeIcon(props) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
+      <path d="m8.5 8.5-4 3.5 4 3.5" />
+      <path d="m15.5 8.5 4 3.5-4 3.5" />
+      <path d="m13.5 5-3 14" />
+    </svg>
+  );
+}
+
+function PhoneIcon(props) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
+      <path d="M6.6 4h2.1c.42 0 .79.28.91.68l.95 3.18a1 1 0 0 1-.24.98l-1.31 1.31a14.1 14.1 0 0 0 4.93 4.93l1.31-1.31a1 1 0 0 1 .98-.24l3.18.95c.4.12.68.49.68.91v2.1A1.5 1.5 0 0 1 19.5 21C10.94 21 4 14.06 4 5.5A1.5 1.5 0 0 1 5.5 4h1.1Z" />
+    </svg>
+  );
+}
+
+function MailIcon(props) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
+      <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
+      <path d="m5 7 7 5 7-5" />
     </svg>
   );
 }
@@ -123,24 +296,33 @@ export default function HomePage() {
         repeat: Number.POSITIVE_INFINITY,
         ease: "linear",
       };
+  const sectionMotionProps = shouldReduceMotion
+    ? {}
+    : {
+        initial: "hidden",
+        whileInView: "show",
+        viewport: { once: true, amount: 0.2 },
+        variants: sectionContainer,
+      };
+  const itemMotionProps = shouldReduceMotion ? {} : { variants: sectionItem };
 
   // Replace these placeholder URLs with your real profile links.
   const socialLinks = [
     {
       label: "GitHub",
       href: "https://github.com/your-username",
-      icon: <GitHubIcon />,
+      icon: <GitHubIcon className="h-5 w-5" />,
     },
     {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/your-profile/",
-      icon: <LinkedInIcon />,
+      icon: <LinkedInIcon className="h-5 w-5" />,
     },
   ];
 
   return (
     <>
-      <section className="pb-10">
+      <section id="home" className="scroll-mt-28 pb-10">
         <Container size="wide">
           <div className="relative overflow-hidden rounded-[2.5rem] border border-sky-300/20 bg-[linear-gradient(135deg,rgba(2,6,23,0.95)_0%,rgba(8,15,32,0.92)_42%,rgba(10,18,38,0.96)_100%)] px-6 py-10 shadow-[0_38px_120px_-46px_rgba(2,6,23,0.78)] sm:px-8 sm:py-12 lg:px-12 lg:py-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(96,165,250,0.18),_transparent_28%),radial-gradient(circle_at_80%_18%,_rgba(45,212,191,0.14),_transparent_24%),linear-gradient(120deg,_rgba(56,189,248,0.06),_transparent_48%)]" />
@@ -155,7 +337,7 @@ export default function HomePage() {
             >
               <div className="space-y-7 lg:pr-4 xl:pr-8">
                 <motion.div variants={heroItem} className="space-y-4">
-                  <span className={heroEyebrowClass}>Premium Hero Section</span>
+                  <span className={heroEyebrowClass}>One Page Portfolio</span>
                   <p className="font-mono text-sm uppercase tracking-[0.3em] text-slate-300">
                     DANUKA CHATHURYA
                   </p>
@@ -188,10 +370,10 @@ export default function HomePage() {
                 </motion.p>
 
                 <motion.div variants={heroItem} className="flex flex-wrap gap-4">
-                  <Button href="#featured-work" size="lg">
-                    View Projects
+                  <Button href="#work" size="lg">
+                    View Work
                   </Button>
-                  <Button to="/contact" size="lg" variant="secondary">
+                  <Button href="#contact" size="lg" variant="secondary">
                     Contact Me
                   </Button>
                 </motion.div>
@@ -265,7 +447,7 @@ export default function HomePage() {
                   </div>
 
                   <motion.div variants={heroItem} className="grid gap-4 sm:grid-cols-2">
-                    {photoSummaryCards.map((card) => (
+                    {heroSummaryCards.map((card) => (
                       <div
                         key={card.title}
                         className={`rounded-3xl border border-white/10 bg-slate-950/70 p-5 backdrop-blur-xl ${card.className}`}
@@ -283,85 +465,185 @@ export default function HomePage() {
       </section>
 
       <PageSection
-        id="featured-work"
-        eyebrow="Featured Work"
-        title="A polished placeholder area for project case studies"
-        description="Use this section as the scroll target for the hero CTA, then replace these cards with your strongest portfolio pieces, screenshots, outcomes, and repository links."
+        id="about"
+        className="scroll-mt-28"
+        eyebrow="About"
+        title="A one-page portfolio that tells a clear story about your engineering direction"
+        description="This section combines your academic foundation, internship experience, and backend interests in a layout that is easy to scan for recruiters and collaborators."
       >
-        <div className="grid gap-4 lg:grid-cols-3">
-          {[
-            {
-              title: "Backend Systems",
-              body: "Show API work, architecture decisions, data models, and the reliability thinking behind each build.",
-            },
-            {
-              title: "Full-Stack Products",
-              body: "Highlight projects where frontend experience and backend logic came together as one cohesive product.",
-            },
-            {
-              title: "Engineering Process",
-              body: "Document how you plan, implement, test, and refine work so visitors can see the quality of your thinking.",
-            },
-          ].map((item) => (
-            <article key={item.title} className={`${ui.card} p-5`}>
-              <p className={ui.title}>{item.title}</p>
-              <p className={`${ui.body} mt-3`}>{item.body}</p>
-            </article>
-          ))}
-        </div>
+        <motion.div className="grid gap-4 xl:grid-cols-[1.08fr_0.92fr]" {...sectionMotionProps}>
+          <motion.article className={`${ui.card} overflow-hidden p-6 sm:p-8`} {...itemMotionProps}>
+            <div className="space-y-5">
+              <div className="space-y-3">
+                <p className={ui.eyebrowTitle}>About Me</p>
+                {aboutParagraphs.map((paragraph) => (
+                  <p key={paragraph} className={ui.body}>
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-3 pt-2">
+                {focusAreas.map((area) => (
+                  <span
+                    key={area}
+                    className="inline-flex items-center rounded-full border border-sky-400/15 bg-sky-400/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700 dark:text-sky-200"
+                  >
+                    {area}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.article>
+
+          <motion.div className="grid gap-4" {...itemMotionProps}>
+            {profileHighlights.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <div key={item.title} className={`${ui.card} p-5`}>
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-sky-400/20 bg-sky-400/10 text-sky-300">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div className="space-y-2">
+                      <p className={ui.eyebrowTitle}>{item.title}</p>
+                      <p className={ui.body}>{item.value}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </motion.div>
+        </motion.div>
       </PageSection>
 
       <PageSection
-        eyebrow="Navigation"
-        title="Every route is ready to become a real portfolio page"
-        description="Use these pages as polished starting points, then replace the template copy with your own projects, writing, credentials, and contact details."
+        id="experience"
+        className="scroll-mt-28"
+        eyebrow="Experience"
+        title="Focused on backend work, but grounded in full product delivery"
+        description="These strengths represent the practical value you can bring to internship, junior engineering, and backend-focused project work."
       >
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {secondaryNavigationLinks.map((link) => (
-            <article key={link.label} className={`${ui.card} flex h-full flex-col p-5`}>
-              <div className="flex items-center justify-between gap-4">
-                <h3 className={ui.title}>{link.label}</h3>
-                <span className={ui.badge}>Route</span>
+        <motion.div className="grid gap-4 lg:grid-cols-3" {...sectionMotionProps}>
+          {experienceCards.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <motion.article key={item.title} className={`${ui.card} p-6`} {...itemMotionProps}>
+                <div className="space-y-5">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-300">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <div className="space-y-3">
+                    <h3 className={ui.title}>{item.title}</h3>
+                    <p className={ui.body}>{item.body}</p>
+                  </div>
+                </div>
+              </motion.article>
+            );
+          })}
+        </motion.div>
+      </PageSection>
+
+      <PageSection
+        id="work"
+        className="scroll-mt-28"
+        eyebrow="Work"
+        title="The kind of systems and product work I want to keep building"
+        description="This section gives your portfolio direction even before you add full case studies, helping visitors understand the types of backend and full-stack work that fit you best."
+      >
+        <motion.div className="grid gap-4 lg:grid-cols-3" {...sectionMotionProps}>
+          {workHighlights.map((item) => (
+            <motion.article key={item.title} className={`${ui.card} flex h-full flex-col p-6`} {...itemMotionProps}>
+              <div className="space-y-4">
+                <p className={ui.meta}>{item.title}</p>
+                <p className={ui.body}>{item.body}</p>
               </div>
-              <p className={`${ui.body} mt-3 flex-1`}>{link.description}</p>
-              <div className="mt-5">
-                <Button to={link.to} variant="ghost">
-                  Open {link.label}
+              <div className="mt-5 flex flex-wrap gap-2">
+                {item.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-slate-200/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 dark:border-slate-700/60 dark:text-slate-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.article>
+          ))}
+        </motion.div>
+      </PageSection>
+
+      <PageSection
+        id="contact"
+        className="scroll-mt-28"
+        eyebrow="Contact"
+        title="Let's connect for internships, backend projects, and collaboration"
+        description="Keep this section simple and easy to trust. The clearer your contact details are, the easier it is for the right people to reach out."
+      >
+        <motion.div className="grid gap-4 xl:grid-cols-[0.95fr_1.05fr]" {...sectionMotionProps}>
+          <motion.article className={`${ui.card} p-6 sm:p-8`} {...itemMotionProps}>
+            <div className="space-y-6">
+              <div className="space-y-3">
+                <p className={ui.eyebrowTitle}>Ready for meaningful engineering work</p>
+                <p className={ui.body}>
+                  I am motivated to contribute to backend-focused projects where I can keep
+                  learning, deliver dependable work, and grow through real product experience.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                <Button href="mailto:your.email@example.com">Email Me</Button>
+                <Button href="#home" variant="secondary">
+                  Back to Top
                 </Button>
               </div>
-            </article>
-          ))}
-        </div>
-      </PageSection>
 
-      <PageSection
-        eyebrow="Recommended Flow"
-        title="A portfolio structure that mirrors how modern product teams present value"
-        description="Guide visitors from identity, to proof, to trajectory, to next steps so the site feels intentional rather than just informational."
-      >
-        <div className="grid gap-4 lg:grid-cols-3">
-          <div className={`${ui.card} p-5`}>
-            <p className={ui.meta}>1. Start with context</p>
-            <p className={`${ui.title} mt-1`}>Home and About</p>
-            <p className={`${ui.body} mt-3`}>
-              Introduce who you are, what you build, and the principles that shape your decisions.
-            </p>
-          </div>
-          <div className={`${ui.card} p-5`}>
-            <p className={ui.meta}>2. Show thought process</p>
-            <p className={`${ui.title} mt-1`}>Journal and Career Plan</p>
-            <p className={`${ui.body} mt-3`}>
-              Demonstrate how you think today and where you are investing in growth next.
-            </p>
-          </div>
-          <div className={`${ui.card} p-5`}>
-            <p className={ui.meta}>3. Close with proof</p>
-            <p className={`${ui.title} mt-1`}>CV, Certificates, and Contact</p>
-            <p className={`${ui.body} mt-3`}>
-              Make it easy for hiring managers, clients, or collaborators to validate and respond.
-            </p>
-          </div>
-        </div>
+              <div className="flex flex-wrap gap-3">
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-3 rounded-full border border-slate-200/70 px-4 py-3 text-sm font-semibold text-slate-700 transition duration-200 hover:bg-white/80 hover:text-slate-950 motion-reduce:transition-none dark:border-slate-700/60 dark:text-slate-200 dark:hover:bg-white/5 dark:hover:text-white"
+                  >
+                    {link.icon}
+                    <span>{link.label}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </motion.article>
+
+          <motion.div className="grid gap-4" {...itemMotionProps}>
+            {contactDetails.map((detail) => {
+              const Icon = detail.icon;
+
+              return (
+                <a
+                  key={detail.label}
+                  href={detail.href}
+                  className={`${ui.card} block p-5 transition duration-200 hover:-translate-y-0.5 hover:border-sky-400/20 hover:bg-white/95 motion-reduce:transform-none motion-reduce:transition-none dark:hover:bg-slate-900/80`}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-sky-400/20 bg-sky-400/10 text-sky-300">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div className="min-w-0 space-y-2">
+                      <p className={ui.eyebrowTitle}>{detail.label}</p>
+                      <p className="text-base font-semibold text-slate-950 dark:text-white">
+                        {detail.value}
+                      </p>
+                      <p className={ui.body}>{detail.helper}</p>
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
+          </motion.div>
+        </motion.div>
       </PageSection>
     </>
   );

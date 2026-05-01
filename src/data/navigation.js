@@ -1,39 +1,27 @@
-export const navigationLinks = [
+export const sectionLinks = [
   {
     label: "Home",
-    to: "/",
-    description: "A polished overview page that introduces your work, direction, and featured paths.",
+    href: "#home",
+    description: "Introduce your role, focus, and first impression above the fold.",
   },
   {
     label: "About",
-    to: "/about",
-    description: "Share the story, values, and working style behind your product and engineering decisions.",
+    href: "#about",
+    description: "Share your background, engineering foundation, and current direction.",
   },
   {
-    label: "Journal",
-    to: "/journal",
-    description: "Publish essays, notes, and lightweight learnings in a space built for thoughtful writing.",
+    label: "Experience",
+    href: "#experience",
+    description: "Highlight internship experience, backend strengths, and practical skills.",
   },
   {
-    label: "Career Plan",
-    to: "/career-plan",
-    description: "Map the capabilities, roles, and milestones you are intentionally building toward.",
-  },
-  {
-    label: "CV",
-    to: "/cv",
-    description: "Present strengths, experience summaries, and the evidence behind your technical impact.",
-  },
-  {
-    label: "Certificates",
-    to: "/certificates",
-    description: "Highlight verified learning, credentials, and structured proof of continuous growth.",
+    label: "Work",
+    href: "#work",
+    description: "Show the kinds of systems, products, and delivery thinking you bring.",
   },
   {
     label: "Contact",
-    to: "/contact",
-    description: "Offer clear channels for collaboration, consulting, speaking, or full-time opportunities.",
+    href: "#contact",
+    description: "Make it easy for recruiters and collaborators to reach out.",
   },
 ];
-
-export const secondaryNavigationLinks = navigationLinks.filter((link) => link.to !== "/");
