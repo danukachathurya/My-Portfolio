@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
+import heroPortrait from "../assets/danuka-photo-placeholder.png";
 import Button from "../components/Button";
 import Container from "../components/Container";
 import PageSection from "../components/PageSection";
@@ -30,6 +31,24 @@ const heroItem = {
     },
   },
 };
+
+const photoSummaryCards = [
+  {
+    title: "Current role",
+    value: "Full Stack Developer Intern",
+    className: "",
+  },
+  {
+    title: "Core strength",
+    value: "Clean backend systems",
+    className: "",
+  },
+  {
+    title: "Style",
+    value: "Modern developer brand",
+    className: "sm:col-span-2",
+  },
+];
 
 function GitHubIcon() {
   return (
@@ -76,11 +95,34 @@ function useTypedRole(role) {
 }
 
 export default function HomePage() {
+  const shouldReduceMotion = useReducedMotion();
   const typedRole = useTypedRole(ROLE);
   const heroBadgeClass =
     "inline-flex items-center justify-center rounded-full border border-sky-300/20 bg-sky-300/10 px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.24em] text-sky-200";
   const heroEyebrowClass =
     "inline-flex items-center gap-2 rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-sky-200";
+  const photoFloatAnimation = shouldReduceMotion
+    ? { y: 0, rotate: 0, scale: 1 }
+    : {
+        y: [0, -12, 0],
+        rotate: [0, 1.2, 0],
+        scale: [1, 1.015, 1],
+      };
+  const photoFloatTransition = shouldReduceMotion
+    ? { duration: 0 }
+    : {
+        duration: 7.5,
+        repeat: Number.POSITIVE_INFINITY,
+        ease: "easeInOut",
+      };
+  const orbitAnimation = shouldReduceMotion ? {} : { rotate: 360 };
+  const orbitTransition = shouldReduceMotion
+    ? { duration: 0 }
+    : {
+        duration: 22,
+        repeat: Number.POSITIVE_INFINITY,
+        ease: "linear",
+      };
 
   // Replace these placeholder URLs with your real profile links.
   const socialLinks = [
@@ -109,9 +151,9 @@ export default function HomePage() {
               variants={heroContainer}
               initial="hidden"
               animate="show"
-              className="relative grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center"
+              className="relative grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(21rem,32rem)] lg:items-center xl:gap-14"
             >
-              <div className="space-y-7">
+              <div className="space-y-7 lg:pr-4 xl:pr-8">
                 <motion.div variants={heroItem} className="space-y-4">
                   <span className={heroEyebrowClass}>Premium Hero Section</span>
                   <p className="font-mono text-sm uppercase tracking-[0.3em] text-slate-300">
@@ -120,7 +162,7 @@ export default function HomePage() {
                 </motion.div>
 
                 <motion.div variants={heroItem} className="space-y-5">
-                  <h1 className="max-w-5xl text-[clamp(3.4rem,7vw,6rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-white">
+                  <h1 className="max-w-4xl text-[clamp(3.4rem,7vw,6rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-white">
                     DANUKA
                     <br />
                     <span className={ui.gradientText}>CHATHURYA</span>
@@ -172,83 +214,67 @@ export default function HomePage() {
                 </motion.div>
               </div>
 
-              <motion.div variants={heroItem}>
-                <div className="relative overflow-hidden rounded-[2rem] border border-sky-300/20 bg-white/5 p-6 shadow-[0_36px_90px_-40px_rgba(2,6,23,0.35)] backdrop-blur-2xl sm:p-8">
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(56,189,248,0.14),_transparent_34%),linear-gradient(180deg,_rgba(255,255,255,0.04),_transparent_100%)]" />
-
-                  <div className="relative space-y-6">
-                    <div className="flex items-center justify-between gap-4">
-                      <div>
-                        <p className="text-[0.75rem] font-bold uppercase tracking-[0.24em] text-sky-200">
-                          Profile Snapshot
-                        </p>
-                        <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white">
-                          Full-stack ambition backed by backend strength
-                        </h2>
-                      </div>
-                      <span className={heroBadgeClass}>2026</span>
-                    </div>
-
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <motion.div
-                        variants={heroItem}
-                        className="rounded-3xl border border-white/10 bg-slate-900/70 p-5"
-                      >
-                        <p className="text-sm font-semibold text-slate-200">Current lane</p>
-                        <p className="mt-4 text-xl font-semibold text-white">
-                          Full Stack Developer Intern
-                        </p>
-                        <p className="mt-3 text-sm leading-7 text-slate-300">
-                          Building a strong portfolio around product-minded development and
-                          dependable backend systems.
-                        </p>
-                      </motion.div>
-
-                      <motion.div
-                        variants={heroItem}
-                        className="rounded-3xl border border-white/10 bg-slate-900/70 p-5"
-                      >
-                        <p className="text-sm font-semibold text-slate-200">Foundation</p>
-                        <p className="mt-4 text-xl font-semibold text-white">
-                          Software Engineering
-                        </p>
-                        <p className="mt-3 text-sm leading-7 text-slate-300">
-                          Focused on clean implementation, maintainable structure, and systems that
-                          can grow with real-world requirements.
-                        </p>
-                      </motion.div>
-                    </div>
+              <motion.div variants={heroItem} className="lg:justify-self-end">
+                <div className="mx-auto flex w-full max-w-[34rem] flex-col gap-6 lg:mx-0">
+                  <div className="relative">
+                    <motion.div
+                      animate={orbitAnimation}
+                      transition={orbitTransition}
+                      className="pointer-events-none absolute inset-4 rounded-[2.75rem] border border-sky-300/15 [mask-image:linear-gradient(180deg,rgba(0,0,0,0.8),transparent)]"
+                    />
+                    <div className="pointer-events-none absolute -inset-4 rounded-[3rem] bg-[radial-gradient(circle_at_top,_rgba(103,232,249,0.22),_transparent_38%),radial-gradient(circle_at_bottom,_rgba(45,212,191,0.18),_transparent_34%)] blur-2xl" />
 
                     <motion.div
-                      variants={heroItem}
-                      className="rounded-3xl border border-white/10 bg-slate-900/70 p-5"
+                      animate={photoFloatAnimation}
+                      transition={photoFloatTransition}
+                      className="relative overflow-hidden rounded-[2.5rem] border border-sky-300/20 bg-white/6 p-3 shadow-[0_36px_90px_-40px_rgba(2,6,23,0.35)] backdrop-blur-2xl"
                     >
-                      <p className="text-sm font-semibold text-slate-200">Strength zones</p>
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {[
-                          "Backend Development",
-                          "API Design",
-                          "System Thinking",
-                          "Clean Architecture",
-                        ].map((item) => (
-                          <span key={item} className={heroBadgeClass}>
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-                    </motion.div>
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(56,189,248,0.14),_transparent_34%),linear-gradient(180deg,_rgba(255,255,255,0.04),_transparent_100%)]" />
+                      <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/80">
+                        <img
+                          src={heroPortrait}
+                          alt="Portrait placeholder for Danuka Chathurya. Replace this file with your real photo."
+                          className="aspect-[4/5] w-full object-cover"
+                        />
 
-                    <motion.div
-                      variants={heroItem}
-                      className="rounded-3xl border border-white/10 bg-slate-900/70 p-5"
-                    >
-                      <p className="text-sm font-semibold text-slate-200">Hero intent</p>
-                      <p className="mt-3 text-sm leading-7 text-slate-300">
-                        This section is designed to create a high-end first impression with motion,
-                        contrast, and strong hierarchy while still feeling technical and personal.
-                      </p>
+                        <motion.div
+                          variants={heroItem}
+                          className="absolute left-4 top-4 rounded-3xl border border-white/10 bg-slate-950/78 px-4 py-3 shadow-[0_24px_60px_-32px_rgba(2,6,23,0.72)] backdrop-blur-xl"
+                        >
+                          <p className="text-[0.7rem] font-bold uppercase tracking-[0.22em] text-sky-200">
+                            4th Year IT
+                          </p>
+                          <p className="mt-2 text-sm font-medium text-slate-100">
+                            SLIIT University
+                          </p>
+                        </motion.div>
+
+                        <motion.div
+                          variants={heroItem}
+                          className="absolute bottom-4 right-4 rounded-3xl border border-white/10 bg-slate-950/78 px-4 py-3 shadow-[0_24px_60px_-32px_rgba(2,6,23,0.72)] backdrop-blur-xl"
+                        >
+                          <p className="text-[0.7rem] font-bold uppercase tracking-[0.22em] text-cyan-200">
+                            Focus
+                          </p>
+                          <p className="mt-2 text-sm font-medium text-slate-100">
+                            Backend Development
+                          </p>
+                        </motion.div>
+                      </div>
                     </motion.div>
                   </div>
+
+                  <motion.div variants={heroItem} className="grid gap-4 sm:grid-cols-2">
+                    {photoSummaryCards.map((card) => (
+                      <div
+                        key={card.title}
+                        className={`rounded-3xl border border-white/10 bg-slate-950/70 p-5 backdrop-blur-xl ${card.className}`}
+                      >
+                        <p className="text-sm font-semibold text-slate-200">{card.title}</p>
+                        <p className="mt-3 text-lg font-semibold text-white">{card.value}</p>
+                      </div>
+                    ))}
+                  </motion.div>
                 </div>
               </motion.div>
             </motion.div>
