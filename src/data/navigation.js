@@ -10,6 +10,11 @@ export const sectionLinks = [
     description: "Share your background, engineering foundation, and current direction.",
   },
   {
+    label: "Education",
+    href: "#education",
+    description: "Follow your academic timeline and core learning milestones.",
+  },
+  {
     label: "Experience",
     href: "#experience",
     description: "Highlight internship experience, backend strengths, and practical skills.",
