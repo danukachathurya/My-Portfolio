@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from "motion/react";
 import heroPortrait from "../assets/danuka-photo-placeholder.png";
 import Button from "../components/Button";
 import CertificatesSection from "../components/CertificatesSection";
+import ContactSection from "../components/ContactSection";
 import Container from "../components/Container";
 import CareerDevelopmentSection from "../components/CareerDevelopmentSection";
 import DownloadCvButton from "../components/DownloadCvButton";
@@ -238,23 +239,6 @@ const personalProjects = [
   },
 ];
 
-const contactDetails = [
-  {
-    label: "Phone",
-    value: "+94 xx xxx xxxx",
-    helper: "Replace this placeholder with the phone number you want to share publicly.",
-    href: "tel:+94000000000",
-    icon: PhoneIcon,
-  },
-  {
-    label: "Email",
-    value: "your.email@example.com",
-    helper: "Replace this placeholder with the email address you actively monitor.",
-    href: "mailto:your.email@example.com",
-    icon: MailIcon,
-  },
-];
-
 const heroContainer = {
   hidden: { opacity: 0 },
   show: {
@@ -362,23 +346,6 @@ function CodeIcon(props) {
       <path d="m8.5 8.5-4 3.5 4 3.5" />
       <path d="m15.5 8.5 4 3.5-4 3.5" />
       <path d="m13.5 5-3 14" />
-    </svg>
-  );
-}
-
-function PhoneIcon(props) {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
-      <path d="M6.6 4h2.1c.42 0 .79.28.91.68l.95 3.18a1 1 0 0 1-.24.98l-1.31 1.31a14.1 14.1 0 0 0 4.93 4.93l1.31-1.31a1 1 0 0 1 .98-.24l3.18.95c.4.12.68.49.68.91v2.1A1.5 1.5 0 0 1 19.5 21C10.94 21 4 14.06 4 5.5A1.5 1.5 0 0 1 5.5 4h1.1Z" />
-    </svg>
-  );
-}
-
-function MailIcon(props) {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
-      <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
-      <path d="m5 7 7 5 7-5" />
     </svg>
   );
 }
@@ -1060,76 +1027,7 @@ export default function HomePage() {
 
       <CareerDevelopmentSection />
 
-      <PageSection
-        id="contact"
-        className="scroll-mt-28"
-        eyebrow="Contact"
-        title="Let's connect for internships, backend projects, and collaboration"
-        description="Keep this section simple and easy to trust. The clearer your contact details are, the easier it is for the right people to reach out."
-      >
-        <motion.div className="grid gap-4 xl:grid-cols-[0.95fr_1.05fr]" {...sectionMotionProps}>
-          <motion.article className={`${ui.card} p-6 sm:p-8`} {...itemMotionProps}>
-            <div className="space-y-6">
-              <div className="space-y-3">
-                <p className={ui.eyebrowTitle}>Ready for meaningful engineering work</p>
-                <p className={ui.body}>
-                  I am motivated to contribute to backend-focused projects where I can keep
-                  learning, deliver dependable work, and grow through real product experience.
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-3">
-                <Button href="mailto:your.email@example.com">Email Me</Button>
-                <Button href="#home" variant="secondary">
-                  Back to Top
-                </Button>
-              </div>
-
-              <div className="flex flex-wrap gap-3">
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-3 rounded-full border border-slate-200/70 px-4 py-3 text-sm font-semibold text-slate-700 transition duration-200 hover:bg-white/80 hover:text-slate-950 motion-reduce:transition-none dark:border-slate-700/60 dark:text-slate-200 dark:hover:bg-white/5 dark:hover:text-white"
-                  >
-                    {link.icon}
-                    <span>{link.label}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </motion.article>
-
-          <motion.div className="grid gap-4" {...itemMotionProps}>
-            {contactDetails.map((detail) => {
-              const Icon = detail.icon;
-
-              return (
-                <a
-                  key={detail.label}
-                  href={detail.href}
-                  className={`${ui.card} block p-5 transition duration-200 hover:-translate-y-0.5 hover:border-sky-400/20 hover:bg-white/95 motion-reduce:transform-none motion-reduce:transition-none dark:hover:bg-slate-900/80`}
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-sky-400/20 bg-sky-400/10 text-sky-300">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <div className="min-w-0 space-y-2">
-                      <p className={ui.eyebrowTitle}>{detail.label}</p>
-                      <p className="text-base font-semibold text-slate-950 dark:text-white">
-                        {detail.value}
-                      </p>
-                      <p className={ui.body}>{detail.helper}</p>
-                    </div>
-                  </div>
-                </a>
-              );
-            })}
-          </motion.div>
-        </motion.div>
-      </PageSection>
+      <ContactSection />
     </>
   );
 }
