@@ -1,87 +1,79 @@
+import { motion, useReducedMotion } from "motion/react";
 import Button from "../components/Button";
 import PageHero from "../components/PageHero";
-import PageSection from "../components/PageSection";
+import ReflectiveJournalSection from "../components/ReflectiveJournalSection";
+import { reflectionThemes } from "../data/journal";
 import { ui } from "../lib/ui";
 
 export default function JournalPage() {
+  const shouldReduceMotion = useReducedMotion();
+  const sectionMotionProps = shouldReduceMotion
+    ? {}
+    : {
+        initial: "hidden",
+        whileInView: "show",
+        viewport: { once: true, amount: 0.2 },
+        variants: {
+          hidden: { opacity: 0 },
+          show: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.12,
+              delayChildren: 0.06,
+            },
+          },
+        },
+      };
+  const itemMotionProps = shouldReduceMotion
+    ? {}
+    : {
+        variants: {
+          hidden: { opacity: 0, y: 22 },
+          show: {
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 0.58,
+              ease: [0.16, 1, 0.3, 1],
+            },
+          },
+        },
+      };
+
   return (
     <>
       <PageHero
-        eyebrow="Journal"
-        title="Turn the portfolio into a publishing surface for technical thinking."
-        description="A journal page helps visitors see how you reason through architecture, product tradeoffs, frontend craft, debugging, and lessons learned over time."
+        eyebrow="Reflective Journal"
+        title="A learning timeline shaped by PPW, practice, and steady problem solving."
+        description="This journal page reflects what I learned through PPW, the skills I developed, the challenges I faced, and the areas I want to grow into next."
         actions={
           <>
-            <Button to="/about">Back to About</Button>
-            <Button to="/contact" variant="secondary">
-              Invite Collaboration
+            <Button href="/">Back to Portfolio</Button>
+            <Button href="/#contact" variant="secondary">
+              Contact Me
             </Button>
           </>
         }
         aside={
-          <div className="space-y-4">
-            <p className={ui.eyebrowTitle}>Writing Tracks</p>
-            {[
-              "Engineering notes and implementation lessons",
-              "Product thinking and UX decisions",
-              "Career reflections and learning logs",
-            ].map((item) => (
-              <div key={item} className={`${ui.card} p-4`}>
-                <p className={ui.meta}>{item}</p>
-              </div>
+          <motion.div className="grid gap-4" {...sectionMotionProps}>
+            <div className="space-y-2">
+              <p className={ui.eyebrowTitle}>Reflection Themes</p>
+              <p className={ui.body}>
+                The strongest growth came from linking technical learning with real debugging,
+                collaboration, and day-to-day engineering habits.
+              </p>
+            </div>
+
+            {reflectionThemes.map((theme) => (
+              <motion.div key={theme} className={`${ui.card} p-4`} {...itemMotionProps}>
+                <p className={ui.meta}>{theme}</p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         }
       />
 
-      <PageSection
-        eyebrow="Publishing Ideas"
-        title="Organize entries by themes instead of posting into one undifferentiated stream"
-        description="Themes make the archive easier to scan and help hiring managers or clients quickly find the kind of thinking that matters to them."
-      >
-        <div className="grid gap-4 lg:grid-cols-3">
-          {[
-            {
-              title: "Frontend Systems",
-              body: "Write about design systems, performance, accessibility, routing, and component architecture.",
-            },
-            {
-              title: "Product Delivery",
-              body: "Share how you scope work, prioritize tradeoffs, and move ideas from concept to shipped experience.",
-            },
-            {
-              title: "Learning in Public",
-              body: "Capture experiments, failures, and evolving viewpoints so the journal feels alive and honest.",
-            },
-          ].map((item) => (
-            <div key={item.title} className={`${ui.card} p-5`}>
-              <p className={ui.title}>{item.title}</p>
-              <p className={`${ui.body} mt-3`}>{item.body}</p>
-            </div>
-          ))}
-        </div>
-      </PageSection>
-
-      <PageSection
-        eyebrow="Entry Templates"
-        title="Simple content structures that keep writing consistent"
-        description="You do not need every post to be long. Even short notes become valuable when they follow a clear pattern."
-      >
-        <div className="grid gap-4 xl:grid-cols-2">
-          <div className={`${ui.card} p-6`}>
-            <p className={ui.meta}>Case note</p>
-            <p className={`${ui.body} mt-3`}>
-              Problem, constraints, decision, outcome, and what you would change next time.
-            </p>
-          </div>
-          <div className={`${ui.card} p-6`}>
-            <p className={ui.meta}>Learning log</p>
-            <p className={`${ui.body} mt-3`}>
-              Topic explored, why it mattered, key lesson, and one practical application going forward.
-            </p>
-          </div>
-        </div>
-      </PageSection>
+      <ReflectiveJournalSection />
     </>
   );
 }

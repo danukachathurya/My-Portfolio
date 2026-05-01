@@ -35,6 +35,16 @@ export const sectionLinks = [
     description: "See featured personal builds with live demo and source code links.",
   },
   {
+    label: "Journal",
+    href: "#journal",
+    description: "Read reflective notes on learning, debugging, collaboration, and future growth.",
+  },
+  {
+    label: "Career",
+    href: "#career-plan",
+    description: "Follow the roadmap from short-term growth to long-term backend goals.",
+  },
+  {
     label: "Contact",
     href: "#contact",
     description: "Make it easy for recruiters and collaborators to reach out.",
