@@ -20,6 +20,11 @@ export const sectionLinks = [
     description: "Highlight internship experience, backend strengths, and practical skills.",
   },
   {
+    label: "Skills",
+    href: "#skills",
+    description: "Explore the technologies you use across frontend, backend, data, and tooling.",
+  },
+  {
     label: "Work",
     href: "#work",
     description: "Show the kinds of systems, products, and delivery thinking you bring.",
