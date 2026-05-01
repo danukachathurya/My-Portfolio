@@ -76,20 +76,30 @@ const educationTimeline = [
   },
 ];
 
+const workExperience = {
+  role: "Intern Software Engineer",
+  company: "Gamage Recruiters",
+  duration: "May 2025 - Nov 2025",
+  highlights: [
+    "Gained hands-on experience developing and maintaining real-world applications.",
+    "Worked with backend systems, APIs, and databases.",
+  ],
+};
+
 const experienceCards = [
   {
-    title: "Hands-on internship experience",
-    body: "Working at Gamage Recruiters gave me experience maintaining and improving real-world applications, adapting to existing codebases, and contributing within practical delivery constraints.",
+    title: "Role",
+    body: "Intern Software Engineer with practical exposure to production-oriented application work.",
     icon: BriefcaseIcon,
   },
   {
-    title: "Backend-first problem solving",
-    body: "I enjoy designing the logic behind products: APIs, data handling, validation flows, and systems that remain clear and maintainable as they grow.",
+    title: "Focus Areas",
+    body: "Backend systems, API workflows, and database-driven development formed the core of the internship experience.",
     icon: DatabaseIcon,
   },
   {
-    title: "Strong engineering foundation",
-    body: "My academic path and project work have helped me build discipline around software design, implementation quality, and thinking beyond just getting features to work.",
+    title: "Real-World Exposure",
+    body: "The internship strengthened my understanding of how real applications are built, maintained, and improved over time.",
     icon: CodeIcon,
   },
 ];
@@ -596,28 +606,81 @@ export default function HomePage() {
       <PageSection
         id="experience"
         className="scroll-mt-28"
-        eyebrow="Experience"
-        title="Focused on backend work, but grounded in full product delivery"
-        description="These strengths represent the practical value you can bring to internship, junior engineering, and backend-focused project work."
+        eyebrow="Work Experience"
+        title="Featured internship experience at Gamage Recruiters"
+        description="This section highlights the internship experience that strengthened your practical understanding of backend systems, APIs, and real-world application maintenance."
+        panelClassName="border-sky-300/20 bg-[linear-gradient(180deg,rgba(240,249,255,0.94)_0%,rgba(248,250,252,0.92)_100%)] shadow-[0_36px_90px_-40px_rgba(8,47,73,0.22)] dark:bg-[linear-gradient(180deg,rgba(8,15,32,0.94)_0%,rgba(15,23,42,0.84)_100%)] dark:shadow-[0_48px_120px_-52px_rgba(2,6,23,0.82)]"
       >
-        <motion.div className="grid gap-4 lg:grid-cols-3" {...sectionMotionProps}>
-          {experienceCards.map((item) => {
-            const Icon = item.icon;
+        <motion.div className="grid gap-4 xl:grid-cols-[1.18fr_0.82fr]" {...sectionMotionProps}>
+          <motion.article
+            className="relative overflow-hidden rounded-[2rem] border border-sky-300/20 bg-[linear-gradient(135deg,rgba(8,47,73,0.08)_0%,rgba(14,165,233,0.06)_42%,rgba(45,212,191,0.08)_100%)] p-6 shadow-[0_34px_90px_-44px_rgba(8,47,73,0.26)] backdrop-blur-xl dark:bg-[linear-gradient(135deg,rgba(8,47,73,0.34)_0%,rgba(15,23,42,0.56)_52%,rgba(6,182,212,0.16)_100%)] sm:p-8"
+            {...itemMotionProps}
+          >
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(56,189,248,0.14),_transparent_28%),linear-gradient(135deg,_rgba(14,165,233,0.08),_transparent_48%)]" />
 
-            return (
-              <motion.article key={item.title} className={`${ui.card} p-6`} {...itemMotionProps}>
-                <div className="space-y-5">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-300">
-                    <Icon className="h-5 w-5" />
+            <div className="relative space-y-8">
+              <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[1.35rem] border border-sky-300/20 bg-slate-950 text-base font-bold uppercase tracking-[0.28em] text-sky-200 shadow-[0_20px_50px_-28px_rgba(2,6,23,0.85)]">
+                    GR
                   </div>
-                  <div className="space-y-3">
-                    <h3 className={ui.title}>{item.title}</h3>
-                    <p className={ui.body}>{item.body}</p>
+                  <div className="space-y-2">
+                    <p className={ui.eyebrowTitle}>Company Logo Placeholder</p>
+                    <h3 className="text-2xl font-semibold text-slate-950 dark:text-white">
+                      {workExperience.company}
+                    </h3>
+                    <p className="text-base font-medium text-slate-700 dark:text-slate-200">
+                      {workExperience.role}
+                    </p>
                   </div>
                 </div>
-              </motion.article>
-            );
-          })}
+
+                <span className="inline-flex items-center rounded-full border border-sky-400/20 bg-sky-400/10 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.22em] text-sky-700 dark:text-sky-200">
+                  {workExperience.duration}
+                </span>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                {workExperience.highlights.map((highlight) => (
+                  <div
+                    key={highlight}
+                    className="rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_18px_40px_-28px_rgba(15,23,42,0.2)] backdrop-blur-xl dark:border-slate-700/60 dark:bg-slate-950/60"
+                  >
+                    <div className="flex items-start gap-3">
+                      <span className="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-gradient-to-r from-sky-400 to-cyan-300" />
+                      <p className="text-[0.98rem] leading-7 text-slate-700 dark:text-slate-300">
+                        {highlight}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.article>
+
+          <motion.div className="grid gap-4" {...itemMotionProps}>
+            {experienceCards.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <motion.article
+                  key={item.title}
+                  className={`${ui.card} p-6 transition duration-300 hover:-translate-y-1 hover:border-sky-400/20 hover:bg-white/95 motion-reduce:transform-none motion-reduce:transition-none dark:hover:bg-slate-900/80`}
+                  whileHover={shouldReduceMotion ? undefined : { y: -4 }}
+                >
+                  <div className="space-y-5">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-300">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div className="space-y-3">
+                      <h3 className={ui.title}>{item.title}</h3>
+                      <p className={ui.body}>{item.body}</p>
+                    </div>
+                  </div>
+                </motion.article>
+              );
+            })}
+          </motion.div>
         </motion.div>
       </PageSection>
 
