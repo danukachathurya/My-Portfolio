@@ -156,21 +156,42 @@ const skillCategories = [
   },
 ];
 
-const workHighlights = [
+const universityProjects = [
   {
-    title: "API-centered application builds",
-    body: "I am motivated by work that connects business logic, service design, and clean API contracts into systems that are easy to extend.",
-    tags: ["REST APIs", "Validation", "Integration"],
+    title: "Online Vehicle Parking System",
+    description:
+      "A university project focused on managing parking availability, vehicle flow, and slot-based coordination through a streamlined digital system.",
+    techStack: ["React.js", "Node.js", "MongoDB"],
   },
   {
-    title: "Database-backed product features",
-    body: "I enjoy shaping the data layer behind features, from modeling and persistence to the practical decisions that keep applications reliable.",
-    tags: ["Data Modeling", "Queries", "Scalability"],
+    title: "Vehicle Rental System",
+    description:
+      "A rental management platform designed to handle bookings, vehicle listings, and operational workflows for a modern vehicle rental experience.",
+    techStack: ["React.js", "Spring Boot", "MySQL"],
   },
   {
-    title: "Full-stack collaboration",
-    body: "Although I am backend-focused, I can collaborate across the stack and make sure frontend experiences connect smoothly with the systems behind them.",
-    tags: ["Frontend Integration", "Teamwork", "Delivery"],
+    title: "Game App & Note App",
+    description:
+      "A pair of application builds used to strengthen frontend interaction patterns, state handling, and practical CRUD-based feature development.",
+    techStack: ["HTML", "CSS", "JavaScript", "React.js"],
+  },
+  {
+    title: "Wooden Handmade Marketplace System",
+    description:
+      "A marketplace concept for showcasing handmade wooden products with product browsing, seller flows, and order-oriented features.",
+    techStack: ["React.js", "Node.js", "MySQL"],
+  },
+  {
+    title: "Social Media Application",
+    description:
+      "A social platform project centered on posts, profiles, interaction flows, and a full-stack structure for community-style features.",
+    techStack: ["React.js", "Node.js", "MongoDB"],
+  },
+  {
+    title: "Home-Stock System",
+    description:
+      "An inventory-style application for tracking household or small-scale stock data with organized records and efficient item management.",
+    techStack: ["Java", "Spring Boot", "MySQL"],
   },
 ];
 
@@ -516,8 +537,8 @@ export default function HomePage() {
                 </motion.p>
 
                 <motion.div variants={heroItem} className="flex flex-wrap gap-4">
-                  <Button href="#work" size="lg">
-                    View Work
+                  <Button href="#projects" size="lg">
+                    View Projects
                   </Button>
                   <Button href="#contact" size="lg" variant="secondary">
                     Contact Me
@@ -872,28 +893,50 @@ export default function HomePage() {
       </PageSection>
 
       <PageSection
-        id="work"
+        id="projects"
         className="scroll-mt-28"
-        eyebrow="Work"
-        title="The kind of systems and product work I want to keep building"
-        description="This section gives your portfolio direction even before you add full case studies, helping visitors understand the types of backend and full-stack work that fit you best."
+        eyebrow="University Projects"
+        title="Selected university builds across systems, apps, and product ideas"
+        description="These project cards showcase the range of systems and product concepts I have explored through university work, from operational platforms to full-stack application ideas."
       >
-        <motion.div className="grid gap-4 lg:grid-cols-3" {...sectionMotionProps}>
-          {workHighlights.map((item) => (
-            <motion.article key={item.title} className={`${ui.card} flex h-full flex-col p-6`} {...itemMotionProps}>
-              <div className="space-y-4">
-                <p className={ui.meta}>{item.title}</p>
-                <p className={ui.body}>{item.body}</p>
-              </div>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {item.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-slate-200/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 dark:border-slate-700/60 dark:text-slate-300"
-                  >
-                    {tag}
+        <motion.div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-3" {...sectionMotionProps}>
+          {universityProjects.map((project, index) => (
+            <motion.article
+              key={project.title}
+              className="group relative overflow-hidden rounded-[1.9rem] border border-slate-200/70 bg-[linear-gradient(180deg,rgba(255,255,255,0.96)_0%,rgba(248,250,252,0.92)_100%)] p-6 shadow-[0_30px_70px_-40px_rgba(15,23,42,0.22)] backdrop-blur-xl transition duration-300 hover:border-sky-400/20 hover:shadow-[0_36px_90px_-44px_rgba(8,47,73,0.22)] motion-reduce:transition-none dark:border-slate-700/60 dark:bg-[linear-gradient(180deg,rgba(15,23,42,0.88)_0%,rgba(15,23,42,0.72)_100%)] dark:shadow-[0_40px_100px_-46px_rgba(2,6,23,0.84)] dark:hover:bg-slate-900/78"
+              {...itemMotionProps}
+              whileHover={shouldReduceMotion ? undefined : { y: -6 }}
+            >
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(56,189,248,0.12),_transparent_28%),linear-gradient(135deg,_rgba(14,165,233,0.05),_transparent_52%)] opacity-0 transition duration-300 group-hover:opacity-100 motion-reduce:transition-none" />
+
+              <div className="relative flex h-full flex-col">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="space-y-3">
+                    <span className="inline-flex items-center rounded-full border border-sky-400/20 bg-sky-400/10 px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-sky-700 dark:text-sky-200">
+                      Project {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="text-[1.15rem] font-semibold leading-7 text-slate-950 dark:text-white">
+                      {project.title}
+                    </h3>
+                  </div>
+
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-400 via-cyan-300 to-teal-300 text-[0.72rem] font-bold uppercase tracking-[0.16em] text-slate-950 shadow-[0_18px_40px_-24px_rgba(14,165,233,0.4)]">
+                    {String(index + 1).padStart(2, "0")}
                   </span>
-                ))}
+                </div>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {project.techStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full border border-slate-200/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 dark:border-slate-700/60 dark:text-slate-300"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <p className={`${ui.body} mt-5 flex-1`}>{project.description}</p>
               </div>
             </motion.article>
           ))}

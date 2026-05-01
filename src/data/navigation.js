@@ -25,9 +25,9 @@ export const sectionLinks = [
     description: "Explore the technologies you use across frontend, backend, data, and tooling.",
   },
   {
-    label: "Work",
-    href: "#work",
-    description: "Show the kinds of systems, products, and delivery thinking you bring.",
+    label: "Projects",
+    href: "#projects",
+    description: "Browse selected university projects with stacks, context, and project focus.",
   },
   {
     label: "Contact",
