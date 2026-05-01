@@ -93,6 +93,14 @@ export default function CertificatesSection({ className = "", id = "certificates
         description="Use this section to showcase the credentials that support your portfolio story. Each card keeps the certificate image, title, issuer, and date easy to scan."
         panelClassName="border-sky-300/20 bg-[linear-gradient(180deg,rgba(240,249,255,0.94)_0%,rgba(248,250,252,0.92)_100%)] shadow-[0_36px_90px_-40px_rgba(8,47,73,0.18)] dark:bg-[linear-gradient(180deg,rgba(8,15,32,0.94)_0%,rgba(15,23,42,0.84)_100%)] dark:shadow-[0_48px_120px_-52px_rgba(2,6,23,0.82)]"
       >
+        {id === "certificates" ? (
+          <div className="mb-6 flex flex-wrap justify-end gap-3">
+            <Button to="/certificates" variant="secondary">
+              Open Full Page
+            </Button>
+          </div>
+        ) : null}
+
         <motion.div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3" {...sectionMotionProps}>
           {certificates.map((certificate, index) => (
             <motion.button

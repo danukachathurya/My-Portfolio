@@ -1,16 +1,28 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 import Button from "./Button";
 import Container from "./Container";
+import DownloadCvButton from "./DownloadCvButton";
 import ThemeToggle from "./ThemeToggle";
 import { sectionLinks } from "../data/navigation";
 import { cn } from "../lib/cn";
 import { ui } from "../lib/ui";
 
 export default function Navbar() {
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [activeHref, setActiveHref] = useState("#home");
+  const isHomePage = location.pathname === "/";
+  const portfolioHomeHref = isHomePage ? "#home" : "/#home";
+  const contactHref = isHomePage ? "#contact" : "/#contact";
+  const resolveSectionHref = (sectionHref) => (isHomePage ? sectionHref : `/${sectionHref}`);
 
   useEffect(() => {
+    if (!isHomePage) {
+      setActiveHref(location.pathname === "/certificates" ? "#certificates" : "#home");
+      return undefined;
+    }
+
     const updateFromHash = () => {
       setActiveHref(window.location.hash || "#home");
     };
@@ -42,7 +54,7 @@ export default function Navbar() {
       observer.disconnect();
       window.removeEventListener("hashchange", updateFromHash);
     };
-  }, []);
+  }, [isHomePage, location.pathname]);
 
   const handleNavigate = (href) => {
     setIsOpen(false);
@@ -53,7 +65,11 @@ export default function Navbar() {
     <header className="sticky top-0 z-20 border-b border-slate-200/70 bg-white/70 backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/70">
       <Container as="nav" size="wide" className="py-4">
         <div className="flex items-center justify-between gap-4">
-          <a href="#home" className="flex items-center gap-3" onClick={() => handleNavigate("#home")}>
+          <a
+            href={portfolioHomeHref}
+            className="flex items-center gap-3"
+            onClick={() => handleNavigate("#home")}
+          >
             <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-r from-sky-400 via-cyan-300 to-teal-300 text-sm font-semibold text-slate-950 shadow-[0_16px_30px_-16px_rgba(6,182,212,0.4)]">
               DC
             </span>
@@ -73,7 +89,7 @@ export default function Navbar() {
                 return (
                   <li key={link.label}>
                     <a
-                      href={link.href}
+                      href={resolveSectionHref(link.href)}
                       aria-current={isActive ? "page" : undefined}
                       onClick={() => handleNavigate(link.href)}
                       className={cn(
@@ -90,7 +106,10 @@ export default function Navbar() {
               })}
             </ul>
             <ThemeToggle />
-            <Button href="#contact" size="sm" onClick={() => handleNavigate("#contact")}>
+            <DownloadCvButton size="sm" variant="secondary">
+              Download CV
+            </DownloadCvButton>
+            <Button href={contactHref} size="sm" onClick={() => handleNavigate("#contact")}>
               Let&apos;s Talk
             </Button>
           </div>
@@ -142,7 +161,7 @@ export default function Navbar() {
                   return (
                     <li key={link.label}>
                       <a
-                        href={link.href}
+                        href={resolveSectionHref(link.href)}
                         aria-current={isActive ? "page" : undefined}
                         onClick={() => handleNavigate(link.href)}
                         className={cn(
@@ -161,14 +180,19 @@ export default function Navbar() {
 
               <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_auto]">
                 <ThemeToggle className="min-w-0 w-full justify-between" />
-                <Button
-                  href="#contact"
-                  className="w-full sm:w-auto"
-                  size="sm"
-                  onClick={() => handleNavigate("#contact")}
-                >
-                  Start a Conversation
-                </Button>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <DownloadCvButton className="w-full" size="sm" variant="secondary">
+                    Download CV
+                  </DownloadCvButton>
+                  <Button
+                    href={contactHref}
+                    className="w-full sm:w-auto"
+                    size="sm"
+                    onClick={() => handleNavigate("#contact")}
+                  >
+                    Start a Conversation
+                  </Button>
+                </div>
               </div>
             </div>
           </div>

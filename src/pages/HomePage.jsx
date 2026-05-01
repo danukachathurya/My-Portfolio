@@ -5,6 +5,7 @@ import Button from "../components/Button";
 import CertificatesSection from "../components/CertificatesSection";
 import Container from "../components/Container";
 import CareerDevelopmentSection from "../components/CareerDevelopmentSection";
+import DownloadCvButton from "../components/DownloadCvButton";
 import PageSection from "../components/PageSection";
 import ReflectiveJournalSection from "../components/ReflectiveJournalSection";
 import { ui } from "../lib/ui";
@@ -582,6 +583,13 @@ export default function HomePage() {
                   <Button href="#projects" size="lg">
                     View Projects
                   </Button>
+                  <DownloadCvButton
+                    size="lg"
+                    variant="secondary"
+                    className="border-white/12 bg-white/10 text-white shadow-[0_24px_60px_-36px_rgba(2,6,23,0.9)] hover:bg-white/14 dark:border-white/12 dark:bg-white/10 dark:text-white dark:hover:bg-white/14"
+                  >
+                    Download CV
+                  </DownloadCvButton>
                   <Button href="#contact" size="lg" variant="secondary">
                     Contact Me
                   </Button>

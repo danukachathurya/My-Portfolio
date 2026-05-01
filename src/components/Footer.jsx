@@ -1,9 +1,13 @@
+import { useLocation } from "react-router";
 import Container from "./Container";
 import { sectionLinks } from "../data/navigation";
 import { ui } from "../lib/ui";
 
 export default function Footer() {
+  const location = useLocation();
   const currentYear = new Date().getFullYear();
+  const isHomePage = location.pathname === "/";
+  const resolveSectionHref = (sectionHref) => (isHomePage ? sectionHref : `/${sectionHref}`);
 
   return (
     <footer
@@ -26,7 +30,7 @@ export default function Footer() {
           {sectionLinks.map((link) => (
             <a
               key={link.label}
-              href={link.href}
+              href={resolveSectionHref(link.href)}
               className="rounded-full border border-slate-200/70 px-4 py-2 text-sm font-medium text-slate-600 transition duration-200 hover:bg-white/80 hover:text-slate-950 motion-reduce:transition-none dark:border-slate-700/60 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white"
             >
               {link.label}
