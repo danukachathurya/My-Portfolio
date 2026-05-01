@@ -25,9 +25,14 @@ export const sectionLinks = [
     description: "Explore the technologies you use across frontend, backend, data, and tooling.",
   },
   {
-    label: "Projects",
+    label: "University",
     href: "#projects",
     description: "Browse selected university projects with stacks, context, and project focus.",
+  },
+  {
+    label: "Personal",
+    href: "#personal-projects",
+    description: "See featured personal builds with live demo and source code links.",
   },
   {
     label: "Contact",
