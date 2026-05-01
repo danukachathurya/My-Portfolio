@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200" fill="none">
+  <rect width="1600" height="1200" rx="56" fill="#F0FDFA"/>
+  <rect x="56" y="56" width="1488" height="1088" rx="40" fill="#FFFFFF" stroke="#99F6E4" stroke-width="10"/>
+  <rect x="104" y="104" width="1392" height="992" rx="32" fill="url(#background)" opacity="0.97"/>
+  <rect x="186" y="176" width="1228" height="86" rx="28" fill="#0F172A"/>
+  <text x="800" y="232" text-anchor="middle" fill="#CCFBF1" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" letter-spacing="9">VERIFIED LEARNING HIGHLIGHT</text>
+  <text x="800" y="410" text-anchor="middle" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="84" font-weight="700" letter-spacing="8">CERTIFICATE PREVIEW 02</text>
+  <text x="800" y="500" text-anchor="middle" fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="600" letter-spacing="4">Add your earned credential screenshot here</text>
+  <rect x="334" y="594" width="932" height="226" rx="32" fill="#FFFFFF" stroke="#99F6E4" stroke-width="4"/>
+  <text x="800" y="696" text-anchor="middle" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="60" font-weight="700" letter-spacing="6">CERTIFICATE TITLE</text>
+  <text x="800" y="760" text-anchor="middle" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" letter-spacing="4">Issuer name | Date earned</text>
+  <path d="M304 936C420 860 522 836 646 836C820 836 918 932 1066 932C1162 932 1248 890 1312 840" stroke="#14B8A6" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="304" cy="936" r="18" fill="#14B8A6"/>
+  <circle cx="1312" cy="840" r="18" fill="#14B8A6"/>
+  <rect x="246" y="860" width="118" height="118" rx="30" fill="#CCFBF1" stroke="#14B8A6" stroke-width="6"/>
+  <path d="M280 920H330" stroke="#0F766E" stroke-width="10" stroke-linecap="round"/>
+  <path d="M280 950H330" stroke="#0F766E" stroke-width="10" stroke-linecap="round"/>
+  <path d="M296 890H314" stroke="#0F766E" stroke-width="10" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="background" x1="104" y1="104" x2="1496" y2="1096" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F0FDFA"/>
+      <stop offset="0.5" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#ECFEFF"/>
+    </linearGradient>
+  </defs>
+</svg>

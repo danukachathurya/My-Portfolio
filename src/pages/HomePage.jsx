@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import heroPortrait from "../assets/danuka-photo-placeholder.png";
 import Button from "../components/Button";
+import CertificatesSection from "../components/CertificatesSection";
 import Container from "../components/Container";
 import CareerDevelopmentSection from "../components/CareerDevelopmentSection";
 import PageSection from "../components/PageSection";
@@ -1044,6 +1045,8 @@ export default function HomePage() {
           ))}
         </motion.div>
       </PageSection>
+
+      <CertificatesSection />
 
       <ReflectiveJournalSection />
 

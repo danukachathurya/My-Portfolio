@@ -35,6 +35,11 @@ export const sectionLinks = [
     description: "See featured personal builds with live demo and source code links.",
   },
   {
+    label: "Certificates",
+    href: "#certificates",
+    description: "Open a clean certificate gallery with preview images, issuers, and dates.",
+  },
+  {
     label: "Journal",
     href: "#journal",
     description: "Read reflective notes on learning, debugging, collaboration, and future growth.",
