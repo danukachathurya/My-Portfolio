@@ -11,6 +11,7 @@ export default function Navbar() {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [isMoreOpen, setIsMoreOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const [activeHref, setActiveHref] = useState("#home");
   const moreMenuRef = useRef(null);
   const isHomePage = location.pathname === "/";
@@ -94,14 +95,41 @@ export default function Navbar() {
     };
   }, [isMoreOpen]);
 
+  useEffect(() => {
+    const updateNavbarVisibility = () => {
+      const nextScrollY = window.scrollY;
+
+      setHasScrolled(nextScrollY > 12);
+    };
+
+    updateNavbarVisibility();
+    window.addEventListener("scroll", updateNavbarVisibility, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", updateNavbarVisibility);
+    };
+  }, []);
+
   const handleNavigate = (href) => {
     setIsOpen(false);
     setIsMoreOpen(false);
     setActiveHref(href);
   };
 
+  const shouldShowNavbar = true;
+
   return (
-    <header className="sticky top-0 z-20 border-b border-slate-200/70 bg-white/70 backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/70">
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-30 border-b backdrop-blur-xl transition duration-300 motion-reduce:transition-none",
+        shouldShowNavbar
+          ? "translate-y-0 opacity-100"
+          : "-translate-y-full opacity-0",
+        hasScrolled || shouldShowNavbar
+          ? "border-slate-200/70 bg-white/72 shadow-[0_18px_44px_-34px_rgba(15,23,42,0.28)] dark:border-slate-800/60 dark:bg-slate-950/74"
+          : "border-transparent bg-transparent shadow-none",
+      )}
+    >
       <Container as="nav" size="wide" className="py-4">
         <div className="flex items-center justify-between gap-4 xl:gap-6">
           <a

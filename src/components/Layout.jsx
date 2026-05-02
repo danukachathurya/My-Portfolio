@@ -9,7 +9,7 @@ export default function Layout({ children }) {
       <div className={ui.topGlow} />
       <div className={ui.bottomGlow} />
       <Navbar />
-      <main className="relative flex-1 pb-24 pt-6 sm:pt-10 lg:pt-12">{children}</main>
+      <main className="relative flex-1 pb-24 pt-20 sm:pt-24 lg:pt-28">{children}</main>
       <Footer />
     </div>
   );

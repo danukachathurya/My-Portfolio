@@ -1,6 +1,6 @@
 export const profile = {
   name: "Danuka Chathurya",
-  role: "Full Stack Developer Intern",
+  role: "Full Stack Developer",
   intro:
     "I am a 4th-year IT undergraduate at SLIIT University with a strong foundation in software engineering and backend development.",
   aboutParagraphs: [
@@ -11,12 +11,12 @@ export const profile = {
   socialLinks: [
     {
       label: "GitHub",
-      href: "https://github.com/your-username",
+      href: "https://github.com/danukachathurya",
       iconKey: "github",
     },
     {
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/your-profile/",
+      href: "https://www.linkedin.com/in/danukachathurya/",
       iconKey: "linkedin",
     },
   ],

@@ -117,9 +117,8 @@ export default function HomeHeroSection() {
           >
             <div className="space-y-7 lg:pr-4 xl:pr-8">
               <motion.div variants={heroItemVariants} className="space-y-4">
-                <span className={heroEyebrowClass}>One Page Portfolio</span>
                 <p className="font-mono text-sm uppercase tracking-[0.3em] text-slate-300">
-                  {profile.name.toUpperCase()}
+                  Hi, my name is
                 </p>
               </motion.div>
 
@@ -137,9 +136,6 @@ export default function HomeHeroSection() {
                     aria-label={profile.role}
                   >
                     {typedRole}
-                    <span className="ml-1 inline-block min-w-[1ch] animate-pulse text-sky-300 motion-reduce:animate-none">
-                      |
-                    </span>
                   </p>
                 </div>
               </motion.div>
@@ -230,7 +226,7 @@ export default function HomeHeroSection() {
                           Focus
                         </p>
                         <p className="mt-2 text-sm font-medium text-slate-100">
-                          Backend Development
+                          Full Stack Development
                         </p>
                       </motion.div>
                     </div>

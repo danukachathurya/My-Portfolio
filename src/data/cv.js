@@ -9,8 +9,8 @@ export const cvData = {
   contact: {
     phone: contactInfo.phone,
     email: contactInfo.email,
-    github: "github.com/your-username",
-    linkedin: "linkedin.com/in/your-profile",
+    github: "github.com/danukachathurya",
+    linkedin: "linkedin.com/in/danukachathurya",
   },
   education: [
     {
