@@ -2,11 +2,11 @@ export const profile = {
   name: "Danuka Chathurya",
   role: "Full Stack Developer",
   intro:
-    "I am a 4th-year IT undergraduate at SLIIT University with a strong foundation in software engineering and backend development.",
+    "I am a 4th-year IT undergraduate at SLIIT University with a strong foundation in programming, full-stack development, and modern web technologies.",
   aboutParagraphs: [
-    "I am a 4th-year IT undergraduate at SLIIT University with a strong foundation in software engineering and backend development.",
+    "I am a 4th-year IT undergraduate at SLIIT University with a strong foundation in programming, full-stack development, and modern web technologies.",
     "I completed my internship as a Software Engineer Intern at Gamage Recruiters, gaining hands-on experience in developing and maintaining real-world applications.",
-    "I am skilled in building scalable systems, working with REST APIs and databases, and motivated to contribute to backend-focused projects.",
+    "I am passionate about building scalable applications, enhancing user experiences, and contributing to innovative solutions.",
   ],
   socialLinks: [
     {
