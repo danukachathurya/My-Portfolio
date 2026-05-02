@@ -1,6 +1,6 @@
 export const reflectionThemes = [
   "Web development foundations",
-  "React and backend integration",
+  "React and full stack integration",
   "Debugging and teamwork growth",
 ];
 
@@ -9,8 +9,8 @@ export const journalTimeline = [
     step: "01",
     title: "What I learned in PPW",
     summary:
-      "PPW helped me connect the full web development flow, from building interfaces to understanding how frontend and backend systems communicate.",
-    points: ["Web development", "React", "Backend integration", "APIs"],
+      "PPW helped me connect the full web development flow, from building interfaces to understanding how complete application layers communicate.",
+    points: ["Web development", "React", "Full stack integration", "APIs"],
   },
   {
     step: "02",
@@ -23,8 +23,8 @@ export const journalTimeline = [
     step: "03",
     title: "Challenges faced",
     summary:
-      "Some of the most difficult parts came from understanding backend-oriented thinking and handling errors that were not immediately obvious.",
-    points: ["Understanding backend logic", "Debugging errors"],
+      "Some of the most difficult parts came from connecting frontend behavior, API logic, and debugging issues that were not immediately obvious.",
+    points: ["Connecting full stack flows", "Debugging errors"],
   },
   {
     step: "04",

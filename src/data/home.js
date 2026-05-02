@@ -6,22 +6,23 @@ export const heroSummaryCards = [
   },
   {
     title: "Core strength",
-    value: "Clean backend systems",
+    value: "Frontend to backend delivery",
     className: "",
   },
   {
     title: "Current focus",
-    value: "API-driven product development",
+    value: "Full stack product development",
     className: "sm:col-span-2",
   },
 ];
 
 export const focusAreas = [
   "Software Engineering",
-  "Backend Development",
+  "Full Stack Development",
+  "Frontend Engineering",
   "REST APIs",
   "Databases",
-  "Scalable Systems",
+  "Scalable Applications",
 ];
 
 export const profileHighlights = [
@@ -37,7 +38,7 @@ export const profileHighlights = [
   },
   {
     title: "Focus",
-    value: "Scalable backend systems, REST APIs, and database-driven apps",
+    value: "Responsive interfaces, REST APIs, and database-driven full stack apps",
     iconKey: "server",
   },
 ];
@@ -66,7 +67,7 @@ export const workExperience = {
   duration: "May 2025 - Nov 2025",
   highlights: [
     "Gained hands-on experience developing and maintaining real-world applications.",
-    "Worked with backend systems, APIs, and databases.",
+    "Worked across interfaces, APIs, and databases to support complete application workflows.",
   ],
 };
 
@@ -78,7 +79,7 @@ export const experienceCards = [
   },
   {
     title: "Focus Areas",
-    body: "Backend systems, API workflows, and database-driven development formed the core of the internship experience.",
+    body: "Frontend interfaces, API workflows, and database-driven development formed the core of the internship experience.",
     iconKey: "database",
   },
   {

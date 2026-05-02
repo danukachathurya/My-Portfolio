@@ -27,7 +27,7 @@ export default function AboutSection() {
       className="scroll-mt-28"
       eyebrow="About"
       title="A one-page portfolio that tells a clear story about your engineering direction"
-      description="This section combines your academic foundation, internship experience, and backend interests in a layout that is easy to scan for recruiters and collaborators."
+      description="This section combines your academic foundation, internship experience, and full stack interests in a layout that is easy to scan for recruiters and collaborators."
     >
       <motion.div className="grid gap-4 xl:grid-cols-[1.08fr_0.92fr]" {...sectionMotionProps}>
         <motion.article className={`${ui.card} overflow-hidden p-6 sm:p-8`} {...itemMotionProps}>

@@ -84,7 +84,7 @@ export default function SkillsSection() {
       id="skills"
       className="scroll-mt-28"
       eyebrow="Skills"
-      title="A categorized toolkit built around modern web and backend development"
+      title="A categorized toolkit built around modern full stack development"
       description="These categories organize the technologies I currently work with across interface development, backend engineering, databases, and delivery tooling."
     >
       <motion.div className="grid gap-4 xl:grid-cols-2" {...sectionMotionProps}>

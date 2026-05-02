@@ -14,7 +14,7 @@ export default function CareerDevelopmentSection({ className = "", id = "career-
       id={id}
       className={`scroll-mt-28 ${className}`.trim()}
       eyebrow="Career Development Plan"
-      title="A roadmap that connects near-term growth with long-term backend ambition"
+      title="A roadmap that connects near-term growth with long-term full stack ambition"
       description="This plan breaks my growth into clear phases, while also highlighting the technologies and practices I want to invest in next."
       panelClassName="border-sky-300/20 bg-[linear-gradient(180deg,rgba(240,249,255,0.94)_0%,rgba(248,250,252,0.92)_100%)] shadow-[0_36px_90px_-40px_rgba(8,47,73,0.18)] dark:bg-[linear-gradient(180deg,rgba(8,15,32,0.94)_0%,rgba(15,23,42,0.84)_100%)] dark:shadow-[0_48px_120px_-52px_rgba(2,6,23,0.82)]"
     >

@@ -98,7 +98,7 @@ export default function ContactSection({ className = "", id = "contact" }) {
     window.setTimeout(() => {
       setIsSubmitting(false);
       setSuccessMessage(
-        "Thanks. Your message passed validation successfully and the form is ready to connect to an email or backend service.",
+        "Thanks. Your message passed validation successfully and the form is ready to connect to an email or submission service.",
       );
       setFormValues(initialFormValues);
     }, 500);
@@ -109,7 +109,7 @@ export default function ContactSection({ className = "", id = "contact" }) {
       id={id}
       className={`scroll-mt-28 ${className}`.trim()}
       eyebrow="Contact"
-      title="Let's connect for internships, backend projects, and collaboration"
+      title="Let's connect for internships, full stack projects, and collaboration"
       description="Reach out directly by phone or email, or use the form below to draft a polished message with built-in validation."
       panelClassName="border-sky-300/20 bg-[linear-gradient(180deg,rgba(240,249,255,0.94)_0%,rgba(248,250,252,0.92)_100%)] shadow-[0_36px_90px_-40px_rgba(8,47,73,0.18)] dark:bg-[linear-gradient(180deg,rgba(8,15,32,0.94)_0%,rgba(15,23,42,0.84)_100%)] dark:shadow-[0_48px_120px_-52px_rgba(2,6,23,0.82)]"
     >
@@ -120,7 +120,7 @@ export default function ContactSection({ className = "", id = "contact" }) {
               <span className={ui.badge}>Available For Opportunities</span>
               <h3 className={ui.title}>Start the conversation with the channel that fits best.</h3>
               <p className={ui.body}>
-                I'm open to internship opportunities, backend-focused work, and meaningful
+                I'm open to internship opportunities, full stack development work, and meaningful
                 collaboration. Clear contact details and a simple form make reaching out easy.
               </p>
             </div>
@@ -188,7 +188,7 @@ export default function ContactSection({ className = "", id = "contact" }) {
               <h3 className={ui.title}>Send a polished message with clear validation.</h3>
               <p className={ui.body}>
                 This form currently uses client-side validation and a success state. Connect it to
-                a backend or email service whenever you want to receive live submissions.
+                an email or submission service whenever you want to receive live submissions.
               </p>
             </div>
 

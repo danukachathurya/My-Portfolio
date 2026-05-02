@@ -26,7 +26,7 @@ export default function ExperienceSection() {
       className="scroll-mt-28"
       eyebrow="Work Experience"
       title="Featured internship experience at Gamage Recruiters"
-      description="This section highlights the internship experience that strengthened your practical understanding of backend systems, APIs, and real-world application maintenance."
+      description="This section highlights the internship experience that strengthened your practical understanding of interfaces, APIs, databases, and real-world application maintenance."
       panelClassName="border-sky-300/20 bg-[linear-gradient(180deg,rgba(240,249,255,0.94)_0%,rgba(248,250,252,0.92)_100%)] shadow-[0_36px_90px_-40px_rgba(8,47,73,0.22)] dark:bg-[linear-gradient(180deg,rgba(8,15,32,0.94)_0%,rgba(15,23,42,0.84)_100%)] dark:shadow-[0_48px_120px_-52px_rgba(2,6,23,0.82)]"
     >
       <motion.div className="grid gap-4 xl:grid-cols-[1.18fr_0.82fr]" {...sectionMotionProps}>

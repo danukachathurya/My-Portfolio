@@ -4,7 +4,7 @@ export const careerMilestones = [
     horizon: "Short-term",
     timeframe: "1 year",
     title: "Build stronger execution and land the right opportunity",
-    goals: ["Improve React & backend skills", "Get internship/job"],
+    goals: ["Improve full stack product skills", "Get internship/job"],
   },
   {
     step: "02",
@@ -17,8 +17,8 @@ export const careerMilestones = [
     step: "03",
     horizon: "Long-term",
     timeframe: "5+ years",
-    title: "Move toward backend leadership and large-scale system thinking",
-    goals: ["Become senior backend engineer", "Work with scalable systems"],
+    title: "Move toward senior full stack leadership and product-scale thinking",
+    goals: ["Become senior full stack engineer", "Build scalable end-to-end systems"],
   },
 ];
 

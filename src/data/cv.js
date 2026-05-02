@@ -33,7 +33,7 @@ export const cvData = {
       duration: "May 2025 - Nov 2025",
       highlights: [
         "Gained hands-on experience developing and maintaining real-world applications.",
-        "Worked with backend systems, APIs, and databases.",
+        "Worked across interfaces, APIs, and databases to support complete application workflows.",
       ],
     },
   ],

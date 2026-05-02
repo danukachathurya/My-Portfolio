@@ -116,7 +116,7 @@ export default function CvPage() {
       <PageSection
         eyebrow="Experience"
         title="Internship impact, technical toolkit, and selected projects"
-        description="This section keeps the most relevant backend-focused experience close to the download action."
+        description="This section keeps the most relevant full stack experience close to the download action."
       >
         <div className="grid gap-4 xl:grid-cols-[0.88fr_1.12fr]">
           <div className="space-y-4">

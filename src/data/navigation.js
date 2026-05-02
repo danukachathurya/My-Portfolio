@@ -17,12 +17,12 @@ export const sectionLinks = [
   {
     label: "Experience",
     href: "#experience",
-    description: "Highlight internship experience, backend strengths, and practical skills.",
+    description: "Highlight internship experience, full stack strengths, and practical skills.",
   },
   {
     label: "Skills",
     href: "#skills",
-    description: "Explore the technologies you use across frontend, backend, data, and tooling.",
+    description: "Explore the technologies you use across frontend, backend, databases, and tooling.",
   },
   {
     label: "University Projects",
@@ -47,7 +47,7 @@ export const sectionLinks = [
   {
     label: "Career",
     href: "#career-plan",
-    description: "Follow the roadmap from short-term growth to long-term backend goals.",
+    description: "Follow the roadmap from short-term growth to long-term full stack goals.",
   },
   {
     label: "Contact",
