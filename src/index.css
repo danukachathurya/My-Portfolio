@@ -4,10 +4,14 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 7.5rem;
   }
 
   body {
-    @apply m-0 min-w-[320px] font-sans antialiased;
+    @apply m-0 min-w-[320px] bg-slate-50 font-sans antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   #root {
@@ -23,6 +27,36 @@
   textarea,
   select {
     font: inherit;
+  }
+
+  ::selection {
+    background: rgba(56, 189, 248, 0.22);
+    color: inherit;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(148, 163, 184, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 3px solid transparent;
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(56, 189, 248, 0.78), rgba(20, 184, 166, 0.74));
+    background-clip: padding-box;
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.55);
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(56, 189, 248, 0.66), rgba(34, 211, 238, 0.56));
+    background-clip: padding-box;
   }
 }
 

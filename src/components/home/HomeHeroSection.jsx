@@ -98,10 +98,16 @@ export default function HomeHeroSection() {
   return (
     <section id="home" className="scroll-mt-28 pb-10">
       <Container size="wide">
-        <div className="relative overflow-hidden rounded-[2.5rem] border border-sky-300/20 bg-[linear-gradient(135deg,rgba(2,6,23,0.95)_0%,rgba(8,15,32,0.92)_42%,rgba(10,18,38,0.96)_100%)] px-6 py-10 shadow-[0_38px_120px_-46px_rgba(2,6,23,0.78)] sm:px-8 sm:py-12 lg:px-12 lg:py-14">
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-sky-300/20 bg-[linear-gradient(135deg,rgba(2,6,23,0.95)_0%,rgba(8,15,32,0.92)_42%,rgba(10,18,38,0.96)_100%)] px-5 py-8 shadow-[0_38px_120px_-46px_rgba(2,6,23,0.78)] sm:px-8 sm:py-12 lg:px-12 lg:py-14">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(96,165,250,0.18),_transparent_28%),radial-gradient(circle_at_80%_18%,_rgba(45,212,191,0.14),_transparent_24%),linear-gradient(120deg,_rgba(56,189,248,0.06),_transparent_48%)]" />
           <div className="pointer-events-none absolute -left-16 top-10 h-40 w-40 rounded-full bg-sky-400/10 blur-3xl" />
           <div className="pointer-events-none absolute bottom-0 right-0 h-52 w-52 rounded-full bg-cyan-400/10 blur-3xl" />
+          <motion.div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-[-15%] top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/60 to-transparent"
+            animate={shouldReduceMotion ? undefined : { x: ["-12%", "12%", "-12%"] }}
+            transition={shouldReduceMotion ? undefined : { duration: 11, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+          />
 
           <motion.div
             variants={heroContainerVariants}
@@ -142,7 +148,7 @@ export default function HomeHeroSection() {
                 {profile.intro}
               </motion.p>
 
-              <motion.div variants={heroItemVariants} className="flex flex-wrap gap-4">
+              <motion.div variants={heroItemVariants} className="flex flex-wrap gap-3 sm:gap-4">
                 <Button href="#projects" size="lg">
                   View Projects
                 </Button>
@@ -194,13 +200,14 @@ export default function HomeHeroSection() {
                     animate={photoFloatAnimation}
                     transition={photoFloatTransition}
                     className="relative overflow-hidden rounded-[2.5rem] border border-sky-300/20 bg-white/6 p-3 shadow-[0_36px_90px_-40px_rgba(2,6,23,0.35)] backdrop-blur-2xl"
+                    whileHover={shouldReduceMotion ? undefined : { y: -6, scale: 1.01 }}
                   >
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(56,189,248,0.14),_transparent_34%),linear-gradient(180deg,_rgba(255,255,255,0.04),_transparent_100%)]" />
                     <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/80">
                       <img
                         src={heroPortrait}
                         alt={profile.portraitAlt}
-                        className="aspect-[4/5] w-full object-cover"
+                        className="aspect-[4/5] w-full object-cover sm:aspect-[4/5]"
                       />
 
                       <motion.div
@@ -232,13 +239,14 @@ export default function HomeHeroSection() {
 
                 <motion.div variants={heroItemVariants} className="grid gap-4 sm:grid-cols-2">
                   {heroSummaryCards.map((card) => (
-                    <div
+                    <motion.div
                       key={card.title}
                       className={`rounded-3xl border border-white/10 bg-slate-950/70 p-5 backdrop-blur-xl ${card.className}`}
+                      whileHover={shouldReduceMotion ? undefined : { y: -4, scale: 1.01 }}
                     >
                       <p className="text-sm font-semibold text-slate-200">{card.title}</p>
                       <p className="mt-3 text-lg font-semibold text-white">{card.value}</p>
-                    </div>
+                    </motion.div>
                   ))}
                 </motion.div>
               </div>

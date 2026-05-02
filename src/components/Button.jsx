@@ -1,3 +1,4 @@
+import { motion, useReducedMotion } from "motion/react";
 import { Link } from "react-router";
 import { cn } from "../lib/cn";
 
@@ -27,33 +28,60 @@ export default function Button({
   variant = "primary",
   ...props
 }) {
+  const shouldReduceMotion = useReducedMotion();
   const Component = to ? Link : href ? "a" : as;
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-full border font-semibold leading-none transition duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/40 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 motion-reduce:transform-none motion-reduce:transition-none dark:focus-visible:ring-offset-slate-950",
+    "group relative inline-flex items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full border font-semibold leading-none transition duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/40 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 motion-reduce:transform-none motion-reduce:transition-none dark:focus-visible:ring-offset-slate-950",
     variantClasses[variant] ?? variantClasses.primary,
     sizeClasses[size] ?? sizeClasses.md,
     className,
   );
+  const shimmer = (
+    <span
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 overflow-hidden rounded-full"
+    >
+      <span className="absolute inset-y-0 left-[-32%] w-1/3 -skew-x-12 bg-white/20 opacity-0 blur-xl transition duration-500 group-hover:left-[108%] group-hover:opacity-100 motion-reduce:hidden" />
+    </span>
+  );
+  const content = (
+    <>
+      {shimmer}
+      <span className="relative z-[1] inline-flex items-center justify-center gap-2">{children}</span>
+    </>
+  );
+  const motionProps = shouldReduceMotion
+    ? {}
+    : {
+        whileHover: { y: -3, scale: 1.01 },
+        whileTap: { scale: 0.985 },
+      };
 
   if (to) {
+    const MotionLink = motion.create(Link);
+
     return (
-      <Link to={to} className={classes} {...props}>
-        {children}
-      </Link>
+      <MotionLink to={to} className={classes} {...motionProps} {...props}>
+        {content}
+      </MotionLink>
     );
   }
 
   if (Component === "a") {
+    const MotionAnchor = motion.create("a");
+
     return (
-      <a href={href} className={classes} {...props}>
-        {children}
-      </a>
+      <MotionAnchor href={href} className={classes} {...motionProps} {...props}>
+        {content}
+      </MotionAnchor>
     );
   }
 
+  const MotionComponent = motion.create(Component);
+
   return (
-    <Component type={type ?? "button"} className={classes} {...props}>
-      {children}
-    </Component>
+    <MotionComponent type={type ?? "button"} className={classes} {...motionProps} {...props}>
+      {content}
+    </MotionComponent>
   );
 }

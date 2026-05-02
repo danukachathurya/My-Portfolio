@@ -31,7 +31,7 @@ export default function ThemeToggle({ className = "" }) {
   return (
     <Button
       aria-label={`Switch to ${nextTheme} mode`}
-      className={cn("min-w-[9.5rem] justify-between", className)}
+      className={cn("min-w-[8.5rem] justify-between xl:min-w-[9rem]", className)}
       onClick={() => setTheme(nextTheme)}
       size="sm"
       variant="secondary"

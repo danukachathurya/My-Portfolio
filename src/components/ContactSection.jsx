@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Button from "./Button";
 import PageSection from "./PageSection";
 import {
@@ -130,10 +130,12 @@ export default function ContactSection({ className = "", id = "contact" }) {
                 const Icon = detail.label === "Phone" ? PhoneIcon : MailIcon;
 
                 return (
-                  <a
+                  <motion.a
                     key={detail.label}
                     href={detail.href}
-                    className="block rounded-[1.8rem] border border-slate-200/80 bg-white/78 p-5 shadow-[0_22px_54px_-34px_rgba(15,23,42,0.2)] backdrop-blur-xl transition duration-200 hover:-translate-y-0.5 hover:border-sky-400/20 hover:bg-white/92 motion-reduce:transform-none motion-reduce:transition-none dark:border-slate-700/60 dark:bg-slate-950/58 dark:hover:bg-slate-900/76"
+                    className={`${ui.interactiveCard} block p-5`}
+                    whileHover={shouldReduceMotion ? undefined : { y: -4, scale: 1.01 }}
+                    whileTap={shouldReduceMotion ? undefined : { scale: 0.99 }}
                   >
                     <div className="flex items-start gap-4">
                       <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-sky-400/20 bg-sky-400/10 text-sky-300">
@@ -147,7 +149,7 @@ export default function ContactSection({ className = "", id = "contact" }) {
                         <p className={ui.body}>{detail.helper}</p>
                       </div>
                     </div>
-                  </a>
+                  </motion.a>
                 );
               })}
             </div>
@@ -190,11 +192,16 @@ export default function ContactSection({ className = "", id = "contact" }) {
               </p>
             </div>
 
-            {successMessage ? (
-              <div
+            <AnimatePresence mode="wait">
+              {successMessage ? (
+              <motion.div
                 role="status"
                 aria-live="polite"
                 className="rounded-[1.6rem] border border-emerald-400/20 bg-emerald-400/10 p-4"
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={shouldReduceMotion ? undefined : { opacity: 0, y: -8 }}
+                transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
               >
                 <div className="flex items-start gap-3">
                   <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-emerald-500 dark:text-emerald-300" />
@@ -202,8 +209,9 @@ export default function ContactSection({ className = "", id = "contact" }) {
                     {successMessage}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ) : null}
+            </AnimatePresence>
 
             <form className="space-y-4" noValidate onSubmit={handleSubmit}>
               <div className="grid gap-4 sm:grid-cols-2">

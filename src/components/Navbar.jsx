@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router";
 import Button from "./Button";
 import Container from "./Container";
@@ -6,16 +6,24 @@ import DownloadCvButton from "./DownloadCvButton";
 import ThemeToggle from "./ThemeToggle";
 import { sectionLinks } from "../data/navigation";
 import { cn } from "../lib/cn";
-import { ui } from "../lib/ui";
 
 export default function Navbar() {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
   const [activeHref, setActiveHref] = useState("#home");
+  const moreMenuRef = useRef(null);
   const isHomePage = location.pathname === "/";
   const portfolioHomeHref = isHomePage ? "#home" : "/#home";
   const contactHref = isHomePage ? "#contact" : "/#contact";
   const resolveSectionHref = (sectionHref) => (isHomePage ? sectionHref : `/${sectionHref}`);
+  const primarySectionLinks = sectionLinks.filter((link) =>
+    ["Home", "About", "Education", "Experience", "Skills", "Contact"].includes(link.label),
+  );
+  const secondarySectionLinks = sectionLinks.filter(
+    (link) => !primarySectionLinks.some((primaryLink) => primaryLink.href === link.href),
+  );
+  const isMoreActive = secondarySectionLinks.some((link) => link.href === activeHref);
 
   useEffect(() => {
     if (!isHomePage) {
@@ -56,44 +64,69 @@ export default function Navbar() {
     };
   }, [isHomePage, location.pathname]);
 
+  useEffect(() => {
+    setIsMoreOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!isMoreOpen) {
+      return undefined;
+    }
+
+    const handlePointerDown = (event) => {
+      if (!moreMenuRef.current?.contains(event.target)) {
+        setIsMoreOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsMoreOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isMoreOpen]);
+
   const handleNavigate = (href) => {
     setIsOpen(false);
+    setIsMoreOpen(false);
     setActiveHref(href);
   };
 
   return (
     <header className="sticky top-0 z-20 border-b border-slate-200/70 bg-white/70 backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/70">
       <Container as="nav" size="wide" className="py-4">
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-4 xl:gap-6">
           <a
             href={portfolioHomeHref}
-            className="flex items-center gap-3"
+            className="flex shrink-0 items-center gap-3"
             onClick={() => handleNavigate("#home")}
           >
             <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-r from-sky-400 via-cyan-300 to-teal-300 text-sm font-semibold text-slate-950 shadow-[0_16px_30px_-16px_rgba(6,182,212,0.4)]">
               DC
             </span>
-            <span className="space-y-1">
-              <span className={`${ui.eyebrowTitle} block`}>Danuka Chathurya</span>
-              <span className="block text-sm font-semibold text-slate-950 dark:text-white">
-                Full Stack Developer Intern
-              </span>
-            </span>
           </a>
 
-          <div className="hidden items-center gap-3 lg:flex">
-            <ul className="flex flex-wrap items-center gap-2">
-              {sectionLinks.map((link) => {
+          <div className="hidden min-w-0 flex-1 items-center justify-end gap-3 lg:flex xl:gap-4">
+            <ul className="flex min-w-0 flex-1 flex-nowrap items-center justify-center gap-1 xl:gap-1.5">
+              {primarySectionLinks.map((link) => {
                 const isActive = activeHref === link.href;
 
                 return (
-                  <li key={link.label}>
+                  <li key={link.label} className="shrink-0">
                     <a
                       href={resolveSectionHref(link.href)}
                       aria-current={isActive ? "page" : undefined}
                       onClick={() => handleNavigate(link.href)}
                       className={cn(
-                        "relative inline-flex items-center justify-center overflow-hidden rounded-full border px-4 py-3 text-sm font-semibold transition duration-200 motion-reduce:transform-none motion-reduce:transition-none after:absolute after:bottom-2 after:left-4 after:right-4 after:h-0.5 after:origin-center after:scale-x-0 after:rounded-full after:bg-gradient-to-r after:from-sky-400 after:via-cyan-300 after:to-teal-300 after:transition-transform after:duration-200 hover:-translate-y-0.5 hover:after:scale-x-100",
+                        "relative inline-flex items-center justify-center overflow-hidden whitespace-nowrap rounded-full border px-3 py-2.5 text-[0.92rem] font-semibold transition duration-200 motion-reduce:transform-none motion-reduce:transition-none after:absolute after:bottom-2 after:left-3 after:right-3 after:h-0.5 after:origin-center after:scale-x-0 after:rounded-full after:bg-gradient-to-r after:from-sky-400 after:via-cyan-300 after:to-teal-300 after:transition-transform after:duration-200 hover:-translate-y-0.5 hover:after:scale-x-100 xl:px-4 xl:text-sm",
                         isActive
                           ? "border-sky-400/20 bg-sky-400/10 text-slate-950 after:scale-x-100 dark:text-white"
                           : "border-transparent text-slate-600 hover:bg-white/80 dark:text-slate-300 dark:hover:bg-white/5",
@@ -104,14 +137,77 @@ export default function Navbar() {
                   </li>
                 );
               })}
+              <li className="relative shrink-0" ref={moreMenuRef}>
+                <button
+                  type="button"
+                  aria-expanded={isMoreOpen}
+                  aria-haspopup="menu"
+                  aria-label="Open more navigation links"
+                  onClick={() => setIsMoreOpen((currentState) => !currentState)}
+                  className={cn(
+                    "relative inline-flex items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full border px-3 py-2.5 text-[0.92rem] font-semibold transition duration-200 motion-reduce:transform-none motion-reduce:transition-none after:absolute after:bottom-2 after:left-3 after:right-3 after:h-0.5 after:origin-center after:scale-x-0 after:rounded-full after:bg-gradient-to-r after:from-sky-400 after:via-cyan-300 after:to-teal-300 after:transition-transform after:duration-200 hover:-translate-y-0.5 hover:after:scale-x-100 xl:px-4 xl:text-sm",
+                    isMoreActive || isMoreOpen
+                      ? "border-sky-400/20 bg-sky-400/10 text-slate-950 after:scale-x-100 dark:text-white"
+                      : "border-transparent text-slate-600 hover:bg-white/80 dark:text-slate-300 dark:hover:bg-white/5",
+                  )}
+                >
+                  <span>More</span>
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    className={cn("h-4 w-4 transition-transform duration-200", isMoreOpen && "rotate-180")}
+                  >
+                    <path
+                      d="m5.5 7.5 4.5 4.5 4.5-4.5"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+
+                <div
+                  className={cn(
+                    "absolute right-0 top-full z-30 mt-3 w-64 origin-top-right rounded-[1.5rem] border border-slate-200/70 bg-white/95 p-3 shadow-2xl shadow-slate-950/15 backdrop-blur-xl transition duration-200 dark:border-slate-700/60 dark:bg-slate-950/95",
+                    isMoreOpen
+                      ? "visible translate-y-0 opacity-100"
+                      : "invisible -translate-y-2 opacity-0",
+                  )}
+                >
+                  <ul className="grid gap-1.5">
+                    {secondarySectionLinks.map((link) => {
+                      const isActive = activeHref === link.href;
+
+                      return (
+                        <li key={link.label}>
+                          <a
+                            href={resolveSectionHref(link.href)}
+                            aria-current={isActive ? "page" : undefined}
+                            onClick={() => handleNavigate(link.href)}
+                            className={cn(
+                              "relative block overflow-hidden rounded-2xl px-4 py-3 text-sm font-semibold transition duration-200 motion-reduce:transition-none",
+                              isActive
+                                ? "bg-sky-400/10 text-slate-950 dark:text-white"
+                                : "text-slate-600 hover:bg-slate-100/90 dark:text-slate-300 dark:hover:bg-white/5",
+                            )}
+                          >
+                            {link.label}
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </li>
             </ul>
-            <ThemeToggle />
-            <DownloadCvButton size="sm" variant="secondary">
-              Download CV
-            </DownloadCvButton>
-            <Button href={contactHref} size="sm" onClick={() => handleNavigate("#contact")}>
-              Let&apos;s Talk
-            </Button>
+            <div className="flex shrink-0 items-center gap-3">
+              <ThemeToggle />
+              <DownloadCvButton size="sm" variant="secondary">
+                Download CV
+              </DownloadCvButton>
+            </div>
           </div>
 
           <div className="flex items-center gap-3 lg:hidden">
