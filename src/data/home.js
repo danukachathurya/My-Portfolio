@@ -65,26 +65,57 @@ export const workExperience = {
   role: "Intern Software Engineer",
   company: "Gamage Recruiters",
   duration: "May 2025 - Nov 2025",
+  overview:
+    "As a Software Engineering Intern at Gamage Recruiters, I worked with the software development team to build web-based solutions for both internal and external users.",
   highlights: [
-    "Gained hands-on experience developing and maintaining real-world applications.",
-    "Worked across interfaces, APIs, and databases to support complete application workflows.",
+    "Contributed from early-stage wireframing and UI/UX design through frontend implementation.",
+    "Worked on multiple products serving different user groups, from public-facing websites to internal recruitment tools.",
+  ],
+  projects: [
+    {
+      title: "Veritas University Website",
+      summary:
+        "Built a modern responsive university website covering pages such as Home, Why Us, Our Team, Our Partners, Campus Life, Programs, Courses, and Course Details.",
+      contributions: [
+        "Started the project with UI/UX exploration and page planning in Figma.",
+        "Developed frontend layouts for the final web experience.",
+      ],
+    },
+    {
+      title: "Rent a Car System",
+      summary:
+        "Supported a vehicle rental platform designed to manage day-to-day rental operations and user interactions.",
+      contributions: [
+        "Worked on flows for login and registration, owner profiles, and booking management.",
+        "Helped shape features around notifications and document handling.",
+      ],
+    },
+    {
+      title: "ATS (Applicant Tracking System)",
+      summary:
+        "Contributed to an internal hiring system used to manage recruitment workflows and candidate information.",
+      contributions: [
+        "Worked on wireframing to define the structure of core screens and interactions.",
+        "Handled frontend development for job postings, candidate profiles, listings, and detail views.",
+      ],
+    },
   ],
 };
 
 export const experienceCards = [
   {
-    title: "Role",
-    body: "Intern Software Engineer with practical exposure to production-oriented application work.",
+    title: "Product Scope",
+    body: "Worked across public-facing and internal platforms, contributing to solutions used by both external users and internal teams.",
     iconKey: "briefcase",
   },
   {
-    title: "Focus Areas",
-    body: "Frontend interfaces, API workflows, and database-driven development formed the core of the internship experience.",
+    title: "What I Did",
+    body: "My internship work included wireframing, UI/UX design in Figma, responsive layout building, and frontend implementation.",
     iconKey: "database",
   },
   {
-    title: "Real-World Exposure",
-    body: "The internship strengthened my understanding of how real applications are built, maintained, and improved over time.",
+    title: "Key Areas",
+    body: "The projects covered education, vehicle rental, and recruitment workflows, giving me practical exposure to real product requirements.",
     iconKey: "code",
   },
 ];
