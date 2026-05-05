@@ -217,8 +217,7 @@ export const personalProjects = [
     description:
       "A full-stack blogging platform for creating, managing, and browsing posts with a clean content-focused experience.",
     techStack: ["MongoDB", "Express.js", "React.js", "Node.js"],
-    codeUrl: "https://github.com/your-username/mern-blog-app",
-    demoUrl: "https://your-mern-blog-app-demo.example.com",
+    codeUrl: "https://github.com/danukachathurya/MERN-Blog-App",
     badge: "MB",
   },
   {
@@ -226,8 +225,7 @@ export const personalProjects = [
     description:
       "A booking-oriented web application built around hotel listings, reservations, and user-friendly accommodation flows.",
     techStack: ["MongoDB", "Express.js", "React.js", "Node.js"],
-    codeUrl: "https://github.com/your-username/mern-hotel-booking-app",
-    demoUrl: "https://your-hotel-booking-demo.example.com",
+    codeUrl: "https://github.com/danukachathurya/MERN-Stack-Hotel-Booking-App",
     badge: "HB",
   },
   {
@@ -235,8 +233,7 @@ export const personalProjects = [
     description:
       "An online store experience with product browsing, cart flows, and full-stack commerce-oriented functionality.",
     techStack: ["MongoDB", "Express.js", "React.js", "Node.js"],
-    codeUrl: "https://github.com/your-username/mern-ecommerce-site",
-    demoUrl: "https://your-ecommerce-demo.example.com",
+    codeUrl: "https://github.com/danukachathurya/MERN-Stack-E-Commerce-Site-From-Scratch",
     badge: "EC",
   },
   {
@@ -244,8 +241,7 @@ export const personalProjects = [
     description:
       "A travel-focused website designed to present destinations, inspire exploration, and deliver a polished front-facing experience.",
     techStack: ["HTML", "CSS", "JavaScript", "React.js"],
-    codeUrl: "https://github.com/your-username/travel-site",
-    demoUrl: "https://your-travel-site-demo.example.com",
+    codeUrl: "https://github.com/danukachathurya/Travel---Tour-Website-HTML---CSS---JS---PHP---MySQL",
     badge: "TR",
   },
 ];
