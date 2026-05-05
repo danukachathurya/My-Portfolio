@@ -62,9 +62,6 @@ export default function PersonalProjectsSection() {
                 <Button href={project.codeUrl} target="_blank" rel="noreferrer" size="sm" variant="secondary">
                   Code
                 </Button>
-                <Button href={project.demoUrl} target="_blank" rel="noreferrer" size="sm">
-                  Live Demo
-                </Button>
               </div>
             </div>
           </motion.article>
