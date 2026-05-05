@@ -64,14 +64,6 @@ export default function CertificatesSection({ className = "", id = "certificates
         description="Use this section to showcase the credentials that support your portfolio story. Each card keeps the certificate image, title, issuer, and date easy to scan."
         panelClassName="border-sky-300/20 bg-[linear-gradient(180deg,rgba(240,249,255,0.94)_0%,rgba(248,250,252,0.92)_100%)] shadow-[0_36px_90px_-40px_rgba(8,47,73,0.18)] dark:bg-[linear-gradient(180deg,rgba(8,15,32,0.94)_0%,rgba(15,23,42,0.84)_100%)] dark:shadow-[0_48px_120px_-52px_rgba(2,6,23,0.82)]"
       >
-        {id === "certificates" ? (
-          <div className="mb-6 flex flex-wrap justify-end gap-3">
-            <Button to="/certificates" variant="secondary">
-              Open Full Page
-            </Button>
-          </div>
-        ) : null}
-
         <motion.div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3" {...sectionMotionProps}>
           {certificates.map((certificate, index) => (
             <motion.button
@@ -87,7 +79,7 @@ export default function CertificatesSection({ className = "", id = "certificates
 
               <div className="relative aspect-[4/3] overflow-hidden border-b border-slate-200/70 bg-slate-100 dark:border-slate-700/60 dark:bg-slate-900/90">
                 <img
-                  src={certificate.image}
+                  src={certificate.certificateUrl}
                   alt={certificate.imageAlt}
                   className="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-[1.025] motion-reduce:transition-none"
                 />
@@ -168,7 +160,7 @@ export default function CertificatesSection({ className = "", id = "certificates
                 <div className="bg-[linear-gradient(160deg,rgba(226,232,240,0.6)_0%,rgba(248,250,252,0.98)_100%)] p-4 sm:p-6 dark:bg-[linear-gradient(160deg,rgba(2,6,23,0.95)_0%,rgba(15,23,42,0.92)_100%)]">
                   <div className="flex h-full items-center justify-center overflow-hidden rounded-[1.6rem] border border-slate-200/80 bg-white shadow-[0_26px_70px_-42px_rgba(15,23,42,0.24)] dark:border-slate-700/60 dark:bg-slate-900/90">
                     <img
-                      src={activeCertificate.image}
+                      src={activeCertificate.certificateUrl}
                       alt={activeCertificate.imageAlt}
                       className="max-h-[76vh] w-full object-contain p-4"
                     />
