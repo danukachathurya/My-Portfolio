@@ -1,6 +1,7 @@
-import { useState } from "react";
 import Button from "./Button";
-import { downloadCvPdf } from "../lib/cvPdf";
+
+const CV_DRIVE_URL =
+  "https://drive.google.com/uc?export=download&id=1GAPLKU6YDHBF3fIEOlIHyC78kAo6W4NU";
 
 function DownloadIcon(props) {
   return (
@@ -22,42 +23,22 @@ function DownloadIcon(props) {
 export default function DownloadCvButton({
   children = "Download CV",
   className = "",
-  onClick,
   size = "md",
   variant = "primary",
   ...props
 }) {
-  const [isGenerating, setIsGenerating] = useState(false);
-
-  const handleClick = async (event) => {
-    onClick?.(event);
-
-    if (event.defaultPrevented) {
-      return;
-    }
-
-    setIsGenerating(true);
-
-    try {
-      await Promise.resolve(downloadCvPdf());
-    } finally {
-      window.setTimeout(() => setIsGenerating(false), 320);
-    }
-  };
-
   return (
     <Button
-      as="button"
-      type="button"
+      href={CV_DRIVE_URL}
+      target="_blank"
+      rel="noreferrer"
       size={size}
       variant={variant}
       className={className}
-      onClick={handleClick}
-      aria-busy={isGenerating}
       {...props}
     >
       <DownloadIcon className="h-[1.05rem] w-[1.05rem]" />
-      <span>{isGenerating ? "Preparing PDF..." : children}</span>
+      <span>{children}</span>
     </Button>
   );
 }
